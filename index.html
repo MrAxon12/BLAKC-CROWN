@@ -1,1575 +1,2177 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="description" content="BLACK CROWN Barber Shop - Barbería premium para cortes, barba y estilo masculino.">
-<meta name="theme-color" content="#050505">
-
-<title>BLACK CROWN | Barber Shop</title>
-
-<style>
-/* =========================================================
-   RESET
-========================================================= */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#080808;
-    color:#fff;
-    overflow-x:hidden;
-}
-
-button,
-input,
-select{
-    font-family:inherit;
-}
-
-button{
-    cursor:pointer;
-}
-
-a{
-    text-decoration:none;
-    color:inherit;
-}
-
-/* =========================================================
-   VARIABLES
-========================================================= */
-
-:root{
-    --gold:#d4af37;
-    --gold-light:#f5d76e;
-    --black:#050505;
-    --black2:#0d0d0d;
-    --black3:#151515;
-    --gray:#999;
-    --white:#fff;
-    --red:#e53935;
-    --green:#35d07f;
-}
-
-/* =========================================================
-   SCROLLBAR
-========================================================= */
-
-::-webkit-scrollbar{
-    width:8px;
-}
-
-::-webkit-scrollbar-track{
-    background:#050505;
-}
-
-::-webkit-scrollbar-thumb{
-    background:var(--gold);
-    border-radius:20px;
-}
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-header{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    z-index:1000;
-    background:rgba(0,0,0,.92);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid rgba(212,175,55,.25);
-}
-
-.navbar{
-    width:90%;
-    max-width:1400px;
-    margin:auto;
-    height:78px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
-
-.logo{
-    font-size:27px;
-    font-weight:900;
-    letter-spacing:4px;
-    color:var(--gold);
-}
-
-.logo span{
-    color:white;
-}
-
-.nav-links{
-    display:flex;
-    align-items:center;
-    gap:30px;
-    list-style:none;
-}
-
-.nav-links a{
-    font-size:14px;
-    text-transform:uppercase;
-    letter-spacing:1px;
-    transition:.3s;
-}
-
-.nav-links a:hover{
-    color:var(--gold);
-}
-
-.menu-btn{
-    display:none;
-    background:none;
-    border:none;
-    color:white;
-    font-size:28px;
-}
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    position:relative;
-    background:
-        linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.88)),
-        url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=2000&q=90")
-        center/cover;
-}
-
-.hero-content{
-    max-width:900px;
-    padding:120px 20px 60px;
-    animation:heroIn 1.2s ease;
-}
-
-@keyframes heroIn{
-    from{
-        opacity:0;
-        transform:translateY(40px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-.hero h1{
-    font-size:clamp(50px,9vw,110px);
-    letter-spacing:12px;
-    font-weight:900;
-    color:white;
-    text-shadow:0 0 30px rgba(0,0,0,.8);
-}
-
-.hero h1 span{
-    color:var(--gold);
-}
-
-.hero p{
-    margin:25px auto;
-    color:#ddd;
-    font-size:18px;
-    max-width:650px;
-    line-height:1.7;
-}
-
-.gold-btn{
-    display:inline-block;
-    border:1px solid var(--gold);
-    background:var(--gold);
-    color:#050505;
-    padding:16px 30px;
-    border-radius:4px;
-    font-weight:bold;
-    text-transform:uppercase;
-    letter-spacing:1px;
-    transition:.3s;
-}
-
-.gold-btn:hover{
-    background:transparent;
-    color:var(--gold);
-    transform:translateY(-3px);
-    box-shadow:0 10px 30px rgba(212,175,55,.15);
-}
-
-/* =========================================================
-   SECTIONS
-========================================================= */
-
-section{
-    padding:100px 5%;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:60px;
-}
-
-.section-title small{
-    color:var(--gold);
-    text-transform:uppercase;
-    letter-spacing:4px;
-}
-
-.section-title h2{
-    margin-top:12px;
-    font-size:clamp(32px,5vw,55px);
-}
-
-.section-title p{
-    color:#999;
-    margin:15px auto;
-    max-width:650px;
-    line-height:1.7;
-}
-
-/* =========================================================
-   SERVICES
-========================================================= */
-
-.services{
-    background:#090909;
-}
-
-.services-grid{
-    max-width:1300px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:25px;
-}
-
-.service-card{
-    background:#111;
-    border:1px solid #242424;
-    border-radius:10px;
-    overflow:hidden;
-    transition:.4s;
-    position:relative;
-}
-
-.service-card:hover{
-    transform:translateY(-8px);
-    border-color:var(--gold);
-    box-shadow:0 15px 40px rgba(0,0,0,.5);
-}
-
-.service-image{
-    width:100%;
-    height:220px;
-    object-fit:cover;
-    display:block;
-    transition:.5s;
-}
-
-.service-card:hover .service-image{
-    transform:scale(1.06);
-}
-
-.service-info{
-    padding:22px;
-}
-
-.service-info h3{
-    color:white;
-    margin-bottom:8px;
-}
-
-.service-info p{
-    color:#888;
-    font-size:14px;
-    line-height:1.6;
-}
-
-.service-bottom{
-    margin-top:20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.price{
-    color:var(--gold);
-    font-weight:bold;
-    font-size:20px;
-}
-
-/* =========================================================
-   MOTORCYCLE SECTION
-========================================================= */
-
-.motorcycle{
-    min-height:430px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    background:
-        linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.8)),
-        url("https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1800&q=85")
-        center/cover fixed;
-}
-
-.motorcycle-content{
-    max-width:800px;
-}
-
-.motorcycle h2{
-    font-size:clamp(35px,6vw,70px);
-    color:var(--gold);
-}
-
-.motorcycle p{
-    margin:20px 0;
-    color:#ddd;
-    line-height:1.8;
-}
-
-.bike{
-    font-size:70px;
-    animation:bikeMove 2.5s infinite alternate ease-in-out;
-}
-
-@keyframes bikeMove{
-    from{
-        transform:translateX(-15px) rotate(-2deg);
-    }
-    to{
-        transform:translateX(15px) rotate(2deg);
-    }
-}
-
-/* =========================================================
-   GALLERY
-========================================================= */
-
-.gallery{
-    background:#050505;
-}
-
-.gallery-grid{
-    max-width:1300px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-}
-
-.gallery-item{
-    height:280px;
-    overflow:hidden;
-    border-radius:8px;
-}
-
-.gallery-item img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transition:.5s;
-}
-
-.gallery-item:hover img{
-    transform:scale(1.1);
-}
-
-/* =========================================================
-   APPOINTMENT
-========================================================= */
-
-.booking{
-    background:#0b0b0b;
-}
-
-.booking-container{
-    max-width:1200px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:50px;
-}
-
-.booking-info{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-}
-
-.booking-info h2{
-    font-size:45px;
-    margin-bottom:20px;
-}
-
-.booking-info h2 span{
-    color:var(--gold);
-}
-
-.booking-info p{
-    color:#999;
-    line-height:1.8;
-}
-
-.booking-box{
-    background:#111;
-    padding:30px;
-    border:1px solid #292929;
-    border-radius:12px;
-    box-shadow:0 20px 60px rgba(0,0,0,.3);
-}
-
-.form-group{
-    margin-bottom:18px;
-}
-
-.form-group label{
-    display:block;
-    color:#bbb;
-    font-size:13px;
-    margin-bottom:8px;
-}
-
-.form-group input,
-.form-group select{
-    width:100%;
-    padding:14px;
-    background:#080808;
-    border:1px solid #333;
-    border-radius:5px;
-    color:white;
-    outline:none;
-}
-
-.form-group input:focus,
-.form-group select:focus{
-    border-color:var(--gold);
-}
-
-.full-btn{
-    width:100%;
-}
-
-/* =========================================================
-   CALENDAR
-========================================================= */
-
-.calendar{
-    background:#080808;
-    border:1px solid #292929;
-    border-radius:10px;
-    padding:15px;
-    margin-bottom:20px;
-}
-
-.calendar-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:15px;
-}
-
-.calendar-header h3{
-    color:var(--gold);
-    font-size:16px;
-}
-
-.calendar-arrow{
-    background:#171717;
-    color:white;
-    border:1px solid #333;
-    width:36px;
-    height:36px;
-    border-radius:50%;
-    transition:.3s;
-}
-
-.calendar-arrow:hover{
-    border-color:var(--gold);
-    color:var(--gold);
-}
-
-.calendar-week{
-    display:grid;
-    grid-template-columns:repeat(7,1fr);
-    gap:5px;
-    margin-bottom:5px;
-}
-
-.calendar-week div{
-    text-align:center;
-    color:#777;
-    font-size:11px;
-    font-weight:bold;
-    padding:5px 0;
-}
-
-.calendar-days{
-    display:grid;
-    grid-template-columns:repeat(7,1fr);
-    gap:5px;
-}
-
-.calendar-day{
-    min-height:42px;
-    border:1px solid #242424;
-    background:#111;
-    color:#ddd;
-    border-radius:5px;
-    transition:.2s;
-}
-
-.calendar-day:hover:not(:disabled){
-    border-color:var(--gold);
-    color:var(--gold);
-}
-
-.calendar-day.selected{
-    background:var(--gold);
-    color:#050505;
-    border-color:var(--gold);
-    font-weight:bold;
-}
-
-.calendar-day.today{
-    box-shadow:inset 0 0 0 1px var(--gold);
-}
-
-.calendar-day:disabled{
-    opacity:.22;
-    cursor:not-allowed;
-}
-
-.calendar-day.closed{
-    color:#e55;
-}
-
-/* =========================================================
-   TIME SLOTS
-========================================================= */
-
-.time-title{
-    margin:20px 0 12px;
-    color:#ddd;
-    font-size:14px;
-}
-
-.time-slots{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:8px;
-}
-
-.time-slot{
-    background:#161616;
-    border:1px solid #303030;
-    color:#ddd;
-    padding:12px 5px;
-    border-radius:5px;
-    transition:.2s;
-    font-size:13px;
-}
-
-.time-slot:hover:not(:disabled){
-    border-color:var(--gold);
-    color:var(--gold);
-}
-
-.time-slot.selected{
-    background:var(--gold);
-    color:#050505;
-    border-color:var(--gold);
-    font-weight:bold;
-}
-
-.time-slot.occupied{
-    background:#271010;
-    border-color:#522020;
-    color:#777;
-    text-decoration:line-through;
-    cursor:not-allowed;
-}
-
-.closed-message{
-    text-align:center;
-    padding:20px;
-    background:#211010;
-    color:#ff7777;
-    border:1px solid #482020;
-    border-radius:8px;
-    font-size:14px;
-}
-
-/* =========================================================
-   CHILD AGE
-========================================================= */
-
-.child-age-box{
-    display:none;
-    background:#18130a;
-    border:1px solid rgba(212,175,55,.35);
-    border-radius:8px;
-    padding:15px;
-    margin-bottom:18px;
-}
-
-.child-age-box.show{
-    display:block;
-}
-
-.child-age-box p{
-    color:#aaa;
-    font-size:12px;
-    margin-bottom:10px;
-    line-height:1.5;
-}
-
-/* =========================================================
-   CONTACT
-========================================================= */
-
-.contact{
-    background:#090909;
-}
-
-.contact-grid{
-    max-width:1000px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-}
-
-.contact-card{
-    background:#111;
-    padding:30px 20px;
-    text-align:center;
-    border:1px solid #222;
-    border-radius:10px;
-}
-
-.contact-icon{
-    font-size:35px;
-    margin-bottom:15px;
-}
-
-.contact-card h3{
-    color:var(--gold);
-    margin-bottom:8px;
-}
-
-.contact-card p{
-    color:#999;
-}
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-    padding:30px 5%;
-    background:#030303;
-    border-top:1px solid #191919;
-    text-align:center;
-}
-
-footer strong{
-    color:var(--gold);
-}
-
-footer p{
-    color:#666;
-    margin-top:8px;
-    font-size:13px;
-}
-
-/* =========================================================
-   MODALS
-========================================================= */
-
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.8);
-    backdrop-filter:blur(8px);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    z-index:3000;
-    padding:20px;
-}
-
-.modal.show{
-    display:flex;
-}
-
-.modal-content{
-    width:100%;
-    max-width:900px;
-    max-height:90vh;
-    overflow-y:auto;
-    background:#101010;
-    border:1px solid #333;
-    border-radius:15px;
-    padding:30px;
-    box-shadow:0 30px 100px rgba(0,0,0,.7);
-    animation:modalIn .3s ease;
-}
-
-@keyframes modalIn{
-    from{
-        opacity:0;
-        transform:translateY(20px) scale(.98);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-}
-
-.modal-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
-    margin-bottom:25px;
-}
-
-.modal-header h2{
-    color:var(--gold);
-}
-
-.close-modal{
-    width:38px;
-    height:38px;
-    border-radius:50%;
-    background:#191919;
-    color:white;
-    border:1px solid #333;
-    font-size:20px;
-}
-
-.close-modal:hover{
-    border-color:var(--gold);
-    color:var(--gold);
-}
-
-/* =========================================================
-   BARBER LOGIN
-========================================================= */
-
-.lock-button{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    z-index:1500;
-    width:48px;
-    height:48px;
-    border-radius:50%;
-    background:#111;
-    color:var(--gold);
-    border:1px solid #444;
-    font-size:20px;
-    box-shadow:0 5px 20px rgba(0,0,0,.5);
-    transition:.3s;
-}
-
-.lock-button:hover{
-    border-color:var(--gold);
-    transform:scale(1.08);
-}
-
-/* =========================================================
-   BARBER PANEL
-========================================================= */
-
-.barber-panel{
-    max-width:1200px;
-}
-
-.barber-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:15px;
-    margin-bottom:25px;
-    flex-wrap:wrap;
-}
-
-.barber-actions{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-}
-
-.small-btn{
-    padding:10px 14px;
-    border-radius:5px;
-    border:1px solid #333;
-    background:#181818;
-    color:#ddd;
-    font-weight:bold;
-    font-size:12px;
-}
-
-.small-btn:hover{
-    border-color:var(--gold);
-    color:var(--gold);
-}
-
-.small-btn.gold{
-    background:var(--gold);
-    color:#050505;
-    border-color:var(--gold);
-}
-
-.small-btn.red{
-    border-color:#6a2525;
-    color:#ff7777;
-}
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-    margin-bottom:25px;
-}
-
-.stat{
-    background:#151515;
-    border:1px solid #252525;
-    border-radius:8px;
-    padding:20px;
-}
-
-.stat span{
-    display:block;
-    color:#777;
-    font-size:12px;
-    text-transform:uppercase;
-    margin-bottom:8px;
-}
-
-.stat strong{
-    font-size:30px;
-    color:var(--gold);
-}
-
-.appointment-list{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-}
-
-.appointment{
-    background:#151515;
-    border:1px solid #292929;
-    border-radius:8px;
-    padding:18px;
-    display:grid;
-    grid-template-columns:1fr auto;
-    gap:15px;
-}
-
-.appointment.done{
-    opacity:.5;
-}
-
-.appointment h3{
-    color:white;
-    margin-bottom:8px;
-}
-
-.appointment p{
-    color:#999;
-    font-size:13px;
-    margin:4px 0;
-}
-
-.appointment strong{
-    color:var(--gold);
-}
-
-.appointment-actions{
-    display:flex;
-    align-items:center;
-    gap:7px;
-}
-
-.status{
-    display:inline-block;
-    padding:5px 8px;
-    border-radius:20px;
-    font-size:10px;
-    text-transform:uppercase;
-    font-weight:bold;
-}
-
-.status.pending{
-    background:#28200b;
-    color:#e9c95d;
-}
-
-.status.finished{
-    background:#10281c;
-    color:#5de59a;
-}
-
-.status.future{
-    background:#111d2b;
-    color:#6daeff;
-}
-
-/* =========================================================
-   AGENDA CONFIG
-========================================================= */
-
-.config-section{
-    background:#151515;
-    border:1px solid #292929;
-    padding:20px;
-    border-radius:10px;
-    margin-bottom:18px;
-}
-
-.config-section h3{
-    margin-bottom:15px;
-    color:var(--gold);
-}
-
-.work-days{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
-}
-
-.day-config{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    background:#0c0c0c;
-    padding:13px;
-    border-radius:6px;
-    border:1px solid #252525;
-}
-
-.day-config span{
-    color:#ddd;
-}
-
-.switch{
-    position:relative;
-    width:45px;
-    height:24px;
-}
-
-.switch input{
-    opacity:0;
-    width:0;
-    height:0;
-}
-
-.slider{
-    position:absolute;
-    inset:0;
-    background:#333;
-    border-radius:30px;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.slider:before{
-    content:"";
-    position:absolute;
-    width:18px;
-    height:18px;
-    left:3px;
-    top:3px;
-    background:#aaa;
-    border-radius:50%;
-    transition:.3s;
-}
-
-.switch input:checked + .slider{
-    background:var(--gold);
-}
-
-.switch input:checked + .slider:before{
-    transform:translateX(21px);
-    background:#050505;
-}
-
-.time-config{
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr;
-    gap:12px;
-}
-
-.config-label{
-    color:#888;
-    font-size:12px;
-    margin-bottom:7px;
-    display:block;
-}
-
-.config-input{
-    width:100%;
-    padding:12px;
-    background:#080808;
-    border:1px solid #333;
-    color:white;
-    border-radius:5px;
-}
-
-.holidays{
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-}
-
-.holiday-item{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
-    background:#0c0c0c;
-    border:1px solid #252525;
-    padding:12px;
-    border-radius:6px;
-}
-
-.holiday-item div{
-    color:#bbb;
-    font-size:13px;
-}
-
-.holiday-item small{
-    color:#666;
-    display:block;
-    margin-top:3px;
-}
-
-.empty{
-    text-align:center;
-    padding:30px;
-    color:#666;
-}
-
-/* =========================================================
-   NOTIFICATION
-========================================================= */
-
-.toast{
-    position:fixed;
-    bottom:25px;
-    left:50%;
-    transform:translate(-50%,120px);
-    background:#161616;
-    border:1px solid var(--gold);
-    color:white;
-    padding:15px 22px;
-    border-radius:8px;
-    z-index:5000;
-    opacity:0;
-    transition:.35s;
-    box-shadow:0 10px 40px rgba(0,0,0,.5);
-}
-
-.toast.show{
-    opacity:1;
-    transform:translate(-50%,0);
-}
-
-.toast strong{
-    color:var(--gold);
-}
-
-/* =========================================================
-   ANIMATION
-========================================================= */
-
-.reveal{
-    opacity:0;
-    transform:translateY(30px);
-    transition:1s;
-}
-
-.reveal.active{
-    opacity:1;
-    transform:translateY(0);
-}
-
-/* =========================================================
-   RESPONSIVE TABLET
-========================================================= */
-
-@media(max-width:1024px){
-
-    .services-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .gallery-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .booking-container{
-        grid-template-columns:1fr;
-    }
-
-    .contact-grid{
-        grid-template-columns:repeat(3,1fr);
-    }
-}
-
-/* =========================================================
-   RESPONSIVE MOBILE
-========================================================= */
-
-@media(max-width:768px){
-
-    .navbar{
-        height:68px;
-    }
-
-    .logo{
-        font-size:21px;
-        letter-spacing:2px;
-    }
-
-    .menu-btn{
-        display:block;
-    }
-
-    .nav-links{
-        position:absolute;
-        top:68px;
-        left:0;
-        width:100%;
-        background:#080808;
-        flex-direction:column;
-        align-items:stretch;
-        gap:0;
-        display:none;
-        border-bottom:1px solid #292929;
-    }
-
-    .nav-links.active{
-        display:flex;
-    }
-
-    .nav-links li a{
-        display:block;
-        padding:18px 25px;
-        border-bottom:1px solid #191919;
-    }
-
-    .hero{
-        min-height:90vh;
-    }
-
-    .hero h1{
-        letter-spacing:5px;
-    }
-
-    .hero p{
-        font-size:15px;
-    }
-
-    section{
-        padding:70px 5%;
-    }
-
-    .services-grid{
-        grid-template-columns:1fr;
-    }
-
-    .gallery-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .gallery-item{
-        height:200px;
-    }
-
-    .contact-grid{
-        grid-template-columns:1fr;
-    }
-
-    .stats{
-        grid-template-columns:1fr;
-    }
-
-    .appointment{
-        grid-template-columns:1fr;
-    }
-
-    .appointment-actions{
-        justify-content:flex-start;
-    }
-
-    .work-days{
-        grid-template-columns:1fr;
-    }
-
-    .time-config{
-        grid-template-columns:1fr;
-    }
-
-    .modal-content{
-        padding:20px;
-    }
-}
-
-@media(max-width:480px){
-
-    .hero-content{
-        padding-top:100px;
-    }
-
-    .hero h1{
-        font-size:48px;
-    }
-
-    .section-title h2{
-        font-size:32px;
-    }
-
-    .booking-box{
-        padding:18px;
-    }
-
-    .time-slots{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .calendar-day{
-        min-height:36px;
-        font-size:12px;
-    }
-
-    .calendar-week div{
-        font-size:9px;
-    }
-
-    .gallery-grid{
-        grid-template-columns:1fr;
-    }
-
-    .gallery-item{
-        height:230px;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BLACK CROWN | Barbería Premium</title>
+
+    <meta name="description" content="BLACK CROWN Barbería Premium. Cortes, barba, fades, diseños y servicios exclusivos. Agenda tu cita.">
+    <meta name="keywords" content="barbería, barber, corte de cabello, fade, barba, barbería premium">
+    <meta name="author" content="BLACK CROWN">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* =========================================================
+           VARIABLES
+        ========================================================= */
+
+        :root {
+            --black: #050505;
+            --black2: #0b0b0b;
+            --black3: #111111;
+            --panel: #151515;
+
+            --gold: #d4af37;
+            --gold-light: #f5d76e;
+            --gold-dark: #9b7a16;
+
+            --white: #ffffff;
+            --gray: #aaaaaa;
+            --gray2: #777777;
+
+            --green: #39d98a;
+            --red: #ff5b5b;
+            --blue: #4da6ff;
+
+            --border: rgba(212,175,55,.22);
+
+            --shadow:
+                0 20px 60px rgba(0,0,0,.45);
+
+            --radius: 20px;
+        }
+
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background:
+                radial-gradient(circle at top right, rgba(212,175,55,.08), transparent 30%),
+                var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font-family: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =========================================================
+           SCROLLBAR
+        ========================================================= */
+
+        ::-webkit-scrollbar {
+            width: 9px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold-dark);
+            border-radius: 20px;
+        }
+
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(5,5,5,.88);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid rgba(212,175,55,.12);
+
+            transition: .3s;
+        }
+
+        .header-container {
+            width: min(1250px, 92%);
+            margin: auto;
+
+            min-height: 80px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 38px;
+            letter-spacing: 4px;
+
+            color: var(--gold);
+
+            text-shadow:
+                0 0 20px rgba(212,175,55,.25);
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        nav a {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+
+            color: #ddd;
+
+            position: relative;
+            transition: .3s;
+        }
+
+        nav a::after {
+            content: "";
+
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+
+            width: 0;
+            height: 2px;
+
+            background: var(--gold);
+
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .barber-login-btn {
+            border: 1px solid var(--gold);
+            background: transparent;
+            color: var(--gold);
+
+            padding: 10px 15px;
+            border-radius: 10px;
+
+            font-weight: 700;
+            font-size: 12px;
+
+            transition: .3s;
+        }
+
+        .barber-login-btn:hover {
+            background: var(--gold);
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        .menu-btn {
+            display: none;
+
+            background: transparent;
+            border: none;
+
+            color: white;
+            font-size: 28px;
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            min-height: 100vh;
+
+            position: relative;
+
+            display: flex;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(0,0,0,.92),
+                    rgba(0,0,0,.68),
+                    rgba(0,0,0,.35)
+                ),
+                url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=2000&q=90");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    transparent 60%,
+                    #050505 100%
+                );
+
+            pointer-events: none;
+        }
+
+        .hero-content {
+            width: min(1250px, 92%);
+            margin: auto;
+
+            position: relative;
+            z-index: 2;
+
+            padding-top: 70px;
+
+            animation: fadeUp 1s ease;
+        }
+
+        .hero-small {
+            color: var(--gold);
+
+            font-size: 13px;
+            font-weight: 800;
+
+            letter-spacing: 5px;
+
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+
+            font-size: clamp(75px, 11vw, 150px);
+
+            line-height: .85;
+
+            letter-spacing: 5px;
+
+            max-width: 800px;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero p {
+            max-width: 600px;
+
+            margin-top: 25px;
+
+            color: #d0d0d0;
+
+            line-height: 1.8;
+
+            font-size: 16px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+
+            margin-top: 35px;
+
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 50px;
+
+            padding: 0 25px;
+
+            border-radius: 10px;
+
+            border: 1px solid var(--gold);
+
+            font-weight: 800;
+
+            font-size: 13px;
+
+            letter-spacing: .5px;
+
+            transition: .3s;
+        }
+
+        .btn-gold {
+            background: linear-gradient(
+                135deg,
+                var(--gold-light),
+                var(--gold)
+            );
+
+            color: #050505;
+
+            box-shadow:
+                0 10px 30px rgba(212,175,55,.2);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-4px);
+            box-shadow:
+                0 15px 40px rgba(212,175,55,.35);
+        }
+
+        .btn-outline {
+            background: rgba(255,255,255,.03);
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: var(--gold);
+            color: #000;
+        }
+
+
+        /* =========================================================
+           GENERAL SECTIONS
+        ========================================================= */
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-container {
+            width: min(1250px, 92%);
+            margin: auto;
+        }
+
+        .section-heading {
+            margin-bottom: 50px;
+        }
+
+        .section-tag {
+            color: var(--gold);
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 10px;
+        }
+
+        .section-heading h2 {
+            font-family: 'Bebas Neue', sans-serif;
+
+            font-size: clamp(45px, 6vw, 75px);
+
+            letter-spacing: 2px;
+
+            line-height: 1;
+        }
+
+        .section-heading p {
+            margin-top: 15px;
+
+            max-width: 650px;
+
+            color: var(--gray);
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           SERVICES
+        ========================================================= */
+
+        #servicios {
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(212,175,55,.05),
+                    transparent 30%
+                );
+        }
+
+        .services-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
+        }
+
+        .service-card {
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.05),
+                    rgba(255,255,255,.015)
+                );
+
+            border: 1px solid rgba(255,255,255,.08);
+
+            border-radius: var(--radius);
+
+            transition: .35s;
+
+            box-shadow: 0 15px 40px rgba(0,0,0,.2);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+
+            border-color: rgba(212,175,55,.5);
+
+            box-shadow:
+                0 25px 60px rgba(0,0,0,.4),
+                0 0 30px rgba(212,175,55,.07);
+        }
+
+        .service-image {
+            height: 210px;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            height: 100%;
+            object-fit: cover;
+
+            transition: .5s;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.08);
+        }
+
+        .service-content {
+            padding: 24px;
+        }
+
+        .service-number {
+            color: var(--gold);
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: 2px;
+        }
+
+        .service-content h3 {
+            font-size: 21px;
+
+            margin: 8px 0;
+        }
+
+        .service-content p {
+            color: var(--gray);
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+        .service-price {
+            display: inline-block;
+
+            margin-top: 18px;
+
+            color: var(--gold);
+
+            font-weight: 800;
+        }
+
+        .child-note {
+            display: inline-block;
+
+            margin-top: 12px;
+
+            padding: 8px 10px;
+
+            border-radius: 8px;
+
+            background: rgba(212,175,55,.08);
+
+            border: 1px solid rgba(212,175,55,.2);
+
+            color: var(--gold-light);
+
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+           ROCK / MOTORCYCLE
+        ========================================================= */
+
+        .motor-section {
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(0,0,0,.9),
+                    rgba(0,0,0,.65)
+                ),
+                url("https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=2000&q=85");
+
+            background-size: cover;
+            background-position: center;
+
+            border-top: 1px solid rgba(212,175,55,.15);
+            border-bottom: 1px solid rgba(212,175,55,.15);
+        }
+
+        .motor-content {
+            width: min(1250px,92%);
+            margin: auto;
+
+            min-height: 430px;
+
+            display: flex;
+            align-items: center;
+
+            position: relative;
+        }
+
+        .motor-text {
+            max-width: 700px;
+        }
+
+        .motor-text h2 {
+            font-family: 'Bebas Neue', sans-serif;
+
+            font-size: clamp(55px,7vw,100px);
+
+            line-height: .9;
+
+            letter-spacing: 3px;
+        }
+
+        .motor-text h2 span {
+            color: var(--gold);
+        }
+
+        .motor-text p {
+            color: #ccc;
+
+            margin-top: 20px;
+
+            line-height: 1.8;
+        }
+
+        .bike {
+            position: absolute;
+
+            right: 2%;
+            bottom: 30px;
+
+            font-size: 100px;
+
+            animation: bikeMove 3s ease-in-out infinite alternate;
+        }
+
+
+        /* =========================================================
+           GALLERY
+        ========================================================= */
+
+        .gallery-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 15px;
+        }
+
+        .gallery-item {
+            height: 300px;
+
+            overflow: hidden;
+
+            border-radius: 15px;
+
+            border: 1px solid rgba(255,255,255,.08);
+
+            position: relative;
+        }
+
+        .gallery-item img {
+            height: 100%;
+            object-fit: cover;
+
+            transition: .5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item::after {
+            content: "BLACK CROWN";
+
+            position: absolute;
+
+            left: 15px;
+            bottom: 15px;
+
+            color: white;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            opacity: 0;
+
+            transition: .3s;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+
+        /* =========================================================
+           APPOINTMENTS
+        ========================================================= */
+
+        .appointment-section {
+            background:
+                radial-gradient(
+                    circle at 80% 30%,
+                    rgba(212,175,55,.08),
+                    transparent 35%
+                );
+        }
+
+        .appointment-wrapper {
+            display: grid;
+
+            grid-template-columns:
+                .9fr 1.1fr;
+
+            gap: 30px;
+
+            align-items: stretch;
+        }
+
+        .appointment-visual {
+            position: relative;
+
+            min-height: 700px;
+
+            overflow: hidden;
+
+            border-radius: 25px;
+
+            border: 1px solid rgba(212,175,55,.2);
+
+            box-shadow: var(--shadow);
+        }
+
+        .appointment-visual img {
+            height: 100%;
+
+            object-fit: cover;
+
+            filter: saturate(.8);
+        }
+
+        .appointment-visual::after {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(0,0,0,.95),
+                    rgba(0,0,0,.1)
+                );
+        }
+
+        .visual-text {
+            position: absolute;
+
+            z-index: 2;
+
+            bottom: 35px;
+            left: 30px;
+            right: 30px;
+        }
+
+        .visual-text small {
+            color: var(--gold);
+
+            font-weight: 800;
+
+            letter-spacing: 3px;
+        }
+
+        .visual-text h3 {
+            font-family: 'Bebas Neue', sans-serif;
+
+            font-size: 55px;
+
+            line-height: .95;
+
+            margin: 8px 0;
+        }
+
+        .visual-text p {
+            color: #ccc;
+
+            line-height: 1.6;
+        }
+
+        .appointment-card {
+            background:
+                linear-gradient(
+                    145deg,
+                    #171717,
+                    #0c0c0c
+                );
+
+            border: 1px solid rgba(212,175,55,.2);
+
+            border-radius: 25px;
+
+            padding: 35px;
+
+            box-shadow: var(--shadow);
+        }
+
+        .appointment-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+
+            font-size: 45px;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 8px;
+        }
+
+        .appointment-card > p {
+            color: var(--gray);
+
+            font-size: 13px;
+
+            margin-bottom: 30px;
+
+            line-height: 1.6;
+        }
+
+        .form-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2,1fr);
+
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            color: #ddd;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+
+            border: 1px solid rgba(255,255,255,.1);
+
+            background: #080808;
+
+            color: white;
+
+            border-radius: 10px;
+
+            padding: 14px;
+
+            outline: none;
+
+            transition: .3s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--gold);
+
+            box-shadow:
+                0 0 0 3px rgba(212,175,55,.08);
+        }
+
+        textarea {
+            resize: vertical;
+
+            min-height: 110px;
+        }
+
+        select option {
+            background: #111;
+        }
+
+        .child-info {
+            display: none;
+
+            padding: 12px;
+
+            border-radius: 10px;
+
+            background: rgba(212,175,55,.07);
+
+            border: 1px solid rgba(212,175,55,.25);
+
+            color: var(--gold-light);
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+        .child-info.active {
+            display: block;
+        }
+
+        .date-info {
+            margin-top: 10px;
+
+            color: var(--gray);
+
+            font-size: 12px;
+        }
+
+
+        /* =========================================================
+           TIME SLOTS
+        ========================================================= */
+
+        .slots-area {
+            margin-top: 20px;
+        }
+
+        .slots-title {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 12px;
+        }
+
+        .slots-title strong {
+            font-size: 13px;
+        }
+
+        .slots-title span {
+            color: var(--gold);
+
+            font-size: 11px;
+        }
+
+        .slots-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 9px;
+        }
+
+        .time-slot {
+            border: 1px solid rgba(255,255,255,.1);
+
+            background: #090909;
+
+            color: white;
+
+            padding: 12px 5px;
+
+            border-radius: 9px;
+
+            font-weight: 700;
+
+            font-size: 12px;
+
+            transition: .2s;
+        }
+
+        .time-slot:hover {
+            border-color: var(--gold);
+
+            color: var(--gold);
+
+            transform: translateY(-2px);
+        }
+
+        .time-slot.selected {
+            background: var(--gold);
+
+            color: #000;
+
+            border-color: var(--gold);
+        }
+
+        .time-slot.booked {
+            opacity: .3;
+
+            cursor: not-allowed;
+
+            text-decoration: line-through;
+        }
+
+        .time-slot.disabled {
+            opacity: .25;
+
+            cursor: not-allowed;
+        }
+
+        .slots-message {
+            padding: 15px;
+
+            border-radius: 10px;
+
+            background: rgba(255,255,255,.03);
+
+            border: 1px solid rgba(255,255,255,.08);
+
+            color: var(--gray);
+
+            text-align: center;
+
+            font-size: 12px;
+        }
+
+        .selected-time {
+            margin-top: 15px;
+
+            color: var(--gold-light);
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .submit-appointment {
+            width: 100%;
+
+            margin-top: 25px;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            border-top: 1px solid rgba(212,175,55,.12);
+
+            padding: 50px 0 25px;
+
+            background: #030303;
+        }
+
+        .footer-grid {
+            width: min(1250px,92%);
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                1.5fr 1fr 1fr;
+
+            gap: 40px;
+        }
+
+        footer h3 {
+            font-family: 'Bebas Neue', sans-serif;
+
+            font-size: 30px;
+
+            color: var(--gold);
+        }
+
+        footer p,
+        footer li {
+            color: var(--gray);
+
+            font-size: 13px;
+
+            line-height: 1.8;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        .footer-bottom {
+            width: min(1250px,92%);
+            margin: 40px auto 0;
+
+            padding-top: 20px;
+
+            border-top: 1px solid rgba(255,255,255,.07);
+
+            color: #666;
+
+            font-size: 11px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+
+        /* =========================================================
+           MODALS
+        ========================================================= */
+
+        .modal {
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 5000;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            background: rgba(0,0,0,.82);
+
+            backdrop-filter: blur(12px);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-box {
+            width: min(500px,100%);
+
+            max-height: 92vh;
+
+            overflow-y: auto;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #171717,
+                    #080808
+                );
+
+            border: 1px solid rgba(212,175,55,.3);
+
+            border-radius: 22px;
+
+            padding: 30px;
+
+            box-shadow:
+                0 30px 100px rgba(0,0,0,.7);
+
+            animation: modalIn .3s ease;
+        }
+
+        .modal-header {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 25px;
+        }
+
+        .modal-header h3 {
+            font-family: 'Bebas Neue', sans-serif;
+
+            font-size: 35px;
+        }
+
+        .close-modal {
+            width: 38px;
+            height: 38px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(255,255,255,.1);
+
+            background: #111;
+
+            color: white;
+
+            font-size: 20px;
+        }
+
+        .close-modal:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+
+        /* =========================================================
+           BARBER LOGIN
+        ========================================================= */
+
+        .login-logo {
+            text-align: center;
+
+            font-family: 'Bebas Neue', sans-serif;
+
+            font-size: 55px;
+
+            color: var(--gold);
+
+            letter-spacing: 4px;
+
+            margin-bottom: 5px;
+        }
+
+        .login-subtitle {
+            text-align: center;
+
+            color: var(--gray);
+
+            font-size: 12px;
+
+            margin-bottom: 30px;
+        }
+
+        .login-error {
+            display: none;
+
+            margin-bottom: 15px;
+
+            padding: 12px;
+
+            border-radius: 9px;
+
+            background: rgba(255,91,91,.08);
+
+            border: 1px solid rgba(255,91,91,.25);
+
+            color: #ff8585;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================================================
+           BARBER PANEL
+        ========================================================= */
+
+        .barber-panel {
+            width: min(1100px,100%);
+
+            max-height: 94vh;
+
+            overflow-y: auto;
+
+            background: #090909;
+
+            border: 1px solid rgba(212,175,55,.3);
+
+            border-radius: 25px;
+
+            padding: 30px;
+
+            box-shadow: 0 40px 120px rgba(0,0,0,.8);
+        }
+
+        .panel-top {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 20px;
+
+            margin-bottom: 25px;
+        }
+
+        .panel-top h2 {
+            font-family: 'Bebas Neue', sans-serif;
+
+            font-size: 45px;
+        }
+
+        .panel-top p {
+            color: var(--gray);
+
+            font-size: 12px;
+        }
+
+        .logout-btn {
+            background: transparent;
+
+            color: #ff7474;
+
+            border: 1px solid rgba(255,91,91,.3);
+
+            padding: 10px 14px;
+
+            border-radius: 9px;
+
+            font-weight: 700;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255,91,91,.1);
+        }
+
+        .panel-tabs {
+            display: flex;
+
+            gap: 10px;
+
+            margin-bottom: 25px;
+
+            border-bottom: 1px solid rgba(255,255,255,.08);
+
+            padding-bottom: 12px;
+        }
+
+        .panel-tab {
+            border: 1px solid rgba(255,255,255,.1);
+
+            background: #111;
+
+            color: #aaa;
+
+            padding: 11px 18px;
+
+            border-radius: 9px;
+
+            font-weight: 700;
+
+            font-size: 12px;
+        }
+
+        .panel-tab.active {
+            background: var(--gold);
+
+            color: #000;
+
+            border-color: var(--gold);
+        }
+
+        .panel-section {
+            display: none;
+        }
+
+        .panel-section.active {
+            display: block;
+        }
+
+
+        /* =========================================================
+           STATS
+        ========================================================= */
+
+        .stats-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 15px;
+
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: #121212;
+
+            border: 1px solid rgba(255,255,255,.07);
+
+            border-radius: 15px;
+
+            padding: 20px;
+        }
+
+        .stat-card small {
+            color: var(--gray);
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+        }
+
+        .stat-card strong {
+            display: block;
+
+            font-size: 32px;
+
+            color: var(--gold);
+
+            margin-top: 5px;
+        }
+
+
+        /* =========================================================
+           APPOINTMENT ADMIN CARDS
+        ========================================================= */
+
+        .admin-list {
+            display: grid;
+
+            gap: 12px;
+        }
+
+        .admin-appointment {
+            display: grid;
+
+            grid-template-columns:
+                90px 1fr auto;
+
+            gap: 20px;
+
+            align-items: center;
+
+            background: #121212;
+
+            border: 1px solid rgba(255,255,255,.07);
+
+            border-radius: 15px;
+
+            padding: 17px;
+        }
+
+        .appointment-time {
+            color: var(--gold);
+
+            font-weight: 800;
+
+            font-size: 18px;
+        }
+
+        .appointment-info h4 {
+            font-size: 15px;
+        }
+
+        .appointment-info p {
+            color: var(--gray);
+
+            font-size: 11px;
+
+            margin-top: 5px;
+
+            line-height: 1.6;
+        }
+
+        .appointment-actions {
+            display: flex;
+
+            gap: 7px;
+
+            flex-wrap: wrap;
+
+            justify-content: flex-end;
+        }
+
+        .admin-btn {
+            border: 1px solid rgba(255,255,255,.1);
+
+            background: #090909;
+
+            color: white;
+
+            padding: 8px 10px;
+
+            border-radius: 8px;
+
+            font-size: 11px;
+
+            font-weight: 700;
+        }
+
+        .admin-btn.complete {
+            border-color: rgba(57,217,138,.35);
+
+            color: var(--green);
+        }
+
+        .admin-btn.delete {
+            border-color: rgba(255,91,91,.3);
+
+            color: #ff7373;
+        }
+
+        .admin-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .status {
+            display: inline-block;
+
+            margin-top: 7px;
+
+            padding: 5px 8px;
+
+            border-radius: 7px;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+        }
+
+        .status.pending {
+            color: var(--gold-light);
+
+            background: rgba(212,175,55,.1);
+        }
+
+        .status.completed {
+            color: var(--green);
+
+            background: rgba(57,217,138,.08);
+        }
+
+
+        /* =========================================================
+           SCHEDULE CONFIG
+        ========================================================= */
+
+        .schedule-intro {
+            margin-bottom: 25px;
+
+            padding: 17px;
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(212,175,55,.08),
+                    rgba(255,255,255,.02)
+                );
+
+            border: 1px solid rgba(212,175,55,.15);
+        }
+
+        .schedule-intro h3 {
+            color: var(--gold);
+
+            font-size: 16px;
+
+            margin-bottom: 7px;
+        }
+
+        .schedule-intro p {
+            color: var(--gray);
+
+            font-size: 12px;
+
+            line-height: 1.6;
+        }
+
+        .schedule-list {
+            display: grid;
+
+            gap: 12px;
+        }
+
+        .schedule-day {
+            display: grid;
+
+            grid-template-columns:
+                1.2fr 100px 1fr 1fr;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 15px;
+
+            background: #121212;
+
+            border: 1px solid rgba(255,255,255,.07);
+
+            border-radius: 14px;
+
+            transition: .3s;
+        }
+
+        .schedule-day:hover {
+            border-color: rgba(212,175,55,.25);
+        }
+
+        .day-name {
+            font-weight: 800;
+        }
+
+        .day-name small {
+            display: block;
+
+            color: var(--gray2);
+
+            margin-top: 3px;
+
+            font-size: 10px;
+        }
+
+        .switch-wrap {
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: var(--gray);
+
+            font-size: 10px;
+
+            font-weight: 700;
+        }
+
+        .switch {
+            position: relative;
+
+            width: 44px;
+            height: 24px;
+
+            flex-shrink: 0;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+
+            inset: 0;
+
+            background: #333;
+
+            border-radius: 30px;
+
+            transition: .3s;
+
+            cursor: pointer;
+        }
+
+        .slider::before {
+            content: "";
+
+            position: absolute;
+
+            width: 18px;
+            height: 18px;
+
+            left: 3px;
+            top: 3px;
+
+            background: #fff;
+
+            border-radius: 50%;
+
+            transition: .3s;
+        }
+
+        .switch input:checked + .slider {
+            background: var(--gold);
+        }
+
+        .switch input:checked + .slider::before {
+            transform: translateX(20px);
+
+            background: #000;
+        }
+
+        .schedule-day.off {
+            opacity: .55;
+        }
+
+        .schedule-day.off .schedule-time {
+            pointer-events: none;
+
+            opacity: .35;
+        }
+
+        .schedule-time label {
+            display: block;
+
+            margin-bottom: 6px;
+
+            color: #888;
+
+            font-size: 9px;
+        }
+
+        .schedule-time input {
+            padding: 10px;
+        }
+
+        .schedule-actions {
+            display: flex;
+
+            justify-content: flex-end;
+
+            margin-top: 20px;
+        }
+
+
+        /* =========================================================
+           BLOCKED DAYS
+        ========================================================= */
+
+        .blocked-section {
+            margin-top: 30px;
+
+            padding-top: 25px;
+
+            border-top: 1px solid rgba(255,255,255,.08);
+        }
+
+        .blocked-section h3 {
+            font-size: 18px;
+
+            margin-bottom: 8px;
+        }
+
+        .blocked-section > p {
+            color: var(--gray);
+
+            font-size: 11px;
+
+            margin-bottom: 18px;
+        }
+
+        .blocked-add {
+            display: grid;
+
+            grid-template-columns:
+                180px 1fr auto;
+
+            gap: 10px;
+
+            margin-bottom: 15px;
+        }
+
+        .blocked-list {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+        }
+
+        .blocked-item {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 10px 12px;
+
+            background: #111;
+
+            border: 1px solid rgba(255,255,255,.08);
+
+            border-radius: 10px;
+        }
+
+        .blocked-item div strong {
+            display: block;
+
+            color: white;
+
+            font-size: 11px;
+        }
+
+        .blocked-item div span {
+            color: var(--gray);
+
+            font-size: 9px;
+        }
+
+        .remove-block {
+            border: none;
+
+            background: transparent;
+
+            color: #ff6b6b;
+
+            font-size: 17px;
+        }
+
+
+        /* =========================================================
+           EMPTY
+        ========================================================= */
+
+        .empty-state {
+            padding: 40px 20px;
+
+            text-align: center;
+
+            border: 1px dashed rgba(255,255,255,.1);
+
+            border-radius: 15px;
+
+            color: var(--gray);
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================================
+           SUCCESS MODAL
+        ========================================================= */
+
+        .success-icon {
+            width: 70px;
+            height: 70px;
+
+            margin: 0 auto 20px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(57,217,138,.1);
+
+            border: 1px solid rgba(57,217,138,.3);
+
+            color: var(--green);
+
+            font-size: 32px;
+        }
+
+        .success-modal {
+            text-align: center;
+        }
+
+        .success-modal h3 {
+            font-family: 'Bebas Neue', sans-serif;
+
+            font-size: 40px;
+        }
+
+        .success-modal p {
+            color: var(--gray);
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+            margin: 12px 0 25px;
+        }
+
+
+        /* =========================================================
+           ANIMATIONS
+        ========================================================= */
+
+        @keyframes fadeUp {
+
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        @keyframes modalIn {
+
+            from {
+                opacity: 0;
+                transform: scale(.94) translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+
+        }
+
+        @keyframes bikeMove {
+
+            from {
+                transform: translateX(-20px) rotate(-2deg);
+            }
+
+            to {
+                transform: translateX(20px) rotate(2deg);
+            }
+
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 1050px) {
+
+            .services-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .appointment-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .appointment-visual {
+                min-height: 450px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .schedule-day {
+                grid-template-columns:
+                    1fr 120px 1fr 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 800px) {
+
+            nav {
+                position: absolute;
+
+                top: 80px;
+                left: 0;
+
+                width: 100%;
+
+                padding: 20px;
+
+                background: rgba(5,5,5,.97);
+
+                border-bottom: 1px solid rgba(212,175,55,.15);
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                display: none;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            nav a {
+                padding: 10px 0;
+            }
+
+            .barber-login-btn {
+                width: 100%;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 80px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+            }
+
+            .schedule-day {
+                grid-template-columns: 1fr;
+            }
+
+            .blocked-add {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-appointment {
+                grid-template-columns: 1fr;
+            }
+
+            .appointment-actions {
+                justify-content: flex-start;
+            }
+
+        }
+
+
+        @media (max-width: 550px) {
+
+            section {
+                padding: 75px 0;
+            }
+
+            .logo {
+                font-size: 30px;
+            }
+
+            .hero {
+                min-height: 90vh;
+            }
+
+            .hero h1 {
+                font-size: 64px;
+            }
+
+            .hero p {
+                font-size: 13px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item {
+                height: 350px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .appointment-card {
+                padding: 22px;
+            }
+
+            .appointment-visual {
+                min-height: 400px;
+            }
+
+            .visual-text h3 {
+                font-size: 45px;
+            }
+
+            .slots-grid {
+                grid-template-columns: repeat(3,1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .barber-panel {
+                padding: 20px;
+            }
+
+            .panel-top {
+                align-items: flex-start;
+            }
+
+            .panel-top h2 {
+                font-size: 35px;
+            }
+
+            .panel-tabs {
+                overflow-x: auto;
+            }
+
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-<!-- ======================================================
+
+<!-- =========================================================
      HEADER
-====================================================== -->
+========================================================= -->
 
 <header>
-    <nav class="navbar">
+
+    <div class="header-container">
 
         <a href="#inicio" class="logo">
             BLACK <span>CROWN</span>
         </a>
 
-        <button class="menu-btn" id="menuBtn">☰</button>
+        <nav id="mainNav">
 
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#galeria">Galería</a></li>
-            <li><a href="#citas">Citas</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
+            <a href="#inicio">Inicio</a>
 
-    </nav>
+            <a href="#servicios">Servicios</a>
+
+            <a href="#galeria">Galería</a>
+
+            <a href="#citas">Citas</a>
+
+            <button class="barber-login-btn" onclick="openLogin()">
+                🔒 BARBERO
+            </button>
+
+        </nav>
+
+        <button class="menu-btn" onclick="toggleMenu()" aria-label="Abrir menú">
+            ☰
+        </button>
+
+    </div>
+
 </header>
 
 
-<!-- ======================================================
-     HERO
-====================================================== -->
+<!-- =========================================================
+     MAIN
+========================================================= -->
 
-<section class="hero" id="inicio">
+<main>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section id="inicio" class="hero">
 
     <div class="hero-content">
 
+        <div class="hero-small">
+            BARBERÍA PREMIUM
+        </div>
+
         <h1>
-            BLACK <span>CROWN</span>
+            BLACK<br>
+            <span>CROWN</span>
         </h1>
 
         <p>
-            Barbería premium para hombres que buscan estilo,
-            precisión y actitud.
-        </p>
-
-        <a href="#citas" class="gold-btn">
-            Reservar cita
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- ======================================================
-     SERVICES
-====================================================== -->
-
-<section class="services" id="servicios">
-
-    <div class="section-title reveal">
-        <small>BLACK CROWN</small>
-        <h2>Nuestros Servicios</h2>
-        <p>
-            Elige el servicio que quieres y después selecciona
-            el día y horario disponible.
-        </p>
-    </div>
-
-    <div class="services-grid">
-
-        <article class="service-card reveal">
-            <img class="service-image"
-                 src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=900&q=80"
-                 alt="Corte masculino">
-            <div class="service-info">
-                <h3>✂️ Corte Masculino</h3>
-                <p>Corte personalizado de acuerdo con tu estilo.</p>
-                <div class="service-bottom">
-                    <span class="price">$180</span>
-                </div>
-            </div>
-        </article>
-
-
-        <article class="service-card reveal">
-            <img class="service-image"
-                 src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=900&q=80"
-                 alt="Corte infantil">
-            <div class="service-info">
-                <h3>👦 Corte para Niño</h3>
-                <p>
-                    Corte infantil para niños de
-                    <strong style="color:#d4af37;">3 a 12 años</strong>.
-                </p>
-                <div class="service-bottom">
-                    <span class="price">$150</span>
-                </div>
-            </div>
-        </article>
-
-
-        <article class="service-card reveal">
-            <img class="service-image"
-                 src="https://images.unsplash.com/photo-1534297635766-a262cdcb8ee4?auto=format&fit=crop&w=900&q=80"
-                 alt="Fade">
-            <div class="service-info">
-                <h3>🔥 Fade / Degradado</h3>
-                <p>Degradado limpio y personalizado.</p>
-                <div class="service-bottom">
-                    <span class="price">$200</span>
-                </div>
-            </div>
-        </article>
-
-
-        <article class="service-card reveal">
-            <img class="service-image"
-                 src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=900&q=80"
-                 alt="Taper Fade">
-            <div class="service-info">
-                <h3>💈 Taper Fade</h3>
-                <p>Transición suave y moderna.</p>
-                <div class="service-bottom">
-                    <span class="price">$200</span>
-                </div>
-            </div>
-        </article>
-
-
-        <article class="service-card reveal">
-            <img class="service-image"
-                 src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=900&q=80"
-                 alt="Barba">
-            <div class="service-info">
-                <h3>🧔 Diseño de Barba</h3>
-                <p>Perfilado, definición y acabado profesional.</p>
-                <div class="service-bottom">
-                    <span class="price">$130</span>
-                </div>
-            </div>
-        </article>
-
-
-        <article class="service-card reveal">
-            <img class="service-image"
-                 src="https://images.unsplash.com/photo-1512690459411-b9245aed614b?auto=format&fit=crop&w=900&q=80"
-                 alt="Facial">
-            <div class="service-info">
-                <h3>🧴 Facial</h3>
-                <p>Limpieza y cuidado facial masculino.</p>
-                <div class="service-bottom">
-                    <span class="price">$180</span>
-                </div>
-            </div>
-        </article>
-
-
-        <article class="service-card reveal">
-            <img class="service-image"
-                 src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=900&q=80"
-                 alt="Exfoliación">
-            <div class="service-info">
-                <h3>✨ Exfoliación</h3>
-                <p>Tratamiento para limpiar y renovar la piel.</p>
-                <div class="service-bottom">
-                    <span class="price">$150</span>
-                </div>
-            </div>
-        </article>
-
-
-        <article class="service-card reveal">
-            <img class="service-image"
-                 src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=900&q=80"
-                 alt="Combo premium">
-            <div class="service-info">
-                <h3>👑 Combo Premium</h3>
-                <p>Corte + barba + acabado premium.</p>
-                <div class="service-bottom">
-                    <span class="price">$300</span>
-                </div>
-            </div>
-        </article>
-
-
-        <article class="service-card reveal">
-            <img class="service-image"
-                 src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=900&q=80"
-                 alt="Mullet">
-            <div class="service-info">
-                <h3>⚡ Mullet</h3>
-                <p>Estilo moderno y personalizado.</p>
-                <div class="service-bottom">
-                    <span class="price">$220</span>
-                </div>
-            </div>
-        </article>
-
-
-        <article class="service-card reveal">
-            <img class="service-image"
-                 src="https://images.unsplash.com/photo-1521490683712-35a5a5f6c7c3?auto=format&fit=crop&w=900&q=80"
-                 alt="Diseño especial">
-            <div class="service-info">
-                <h3>💎 Diseño Especial</h3>
-                <p>Diseños personalizados y creativos.</p>
-                <div class="service-bottom">
-                    <span class="price">$250+</span>
-                </div>
-            </div>
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- ======================================================
-     MOTORCYCLE
-====================================================== -->
-
-<section class="motorcycle">
-
-    <div class="motorcycle-content reveal">
-
-        <div class="bike">🏍️</div>
-
-        <h2>STYLE • RIDE • CROWN</h2>
-
-        <p>
-            No solamente cortamos cabello.
+            No hacemos solamente cortes.
             Creamos estilo, actitud y presencia.
+            Entra, siéntate y deja que tu estilo hable por ti.
         </p>
 
-        <a href="#citas" class="gold-btn">
-            Quiero mi cita
-        </a>
+        <div class="hero-buttons">
 
-    </div>
+            <a href="#citas" class="btn btn-gold">
+                AGENDAR CITA
+            </a>
 
-</section>
+            <a href="#servicios" class="btn btn-outline">
+                VER SERVICIOS
+            </a>
 
-
-<!-- ======================================================
-     GALLERY
-====================================================== -->
-
-<section class="gallery" id="galeria">
-
-    <div class="section-title reveal">
-        <small>OUR WORK</small>
-        <h2>Galería</h2>
-    </div>
-
-    <div class="gallery-grid">
-
-        <div class="gallery-item reveal">
-            <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=900&q=80" alt="Barbería">
-        </div>
-
-        <div class="gallery-item reveal">
-            <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=900&q=80" alt="Barbero">
-        </div>
-
-        <div class="gallery-item reveal">
-            <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=900&q=80" alt="Corte">
-        </div>
-
-        <div class="gallery-item reveal">
-            <img src="https://images.unsplash.com/photo-1534297635766-a262cdcb8ee4?auto=format&fit=crop&w=900&q=80" alt="Fade">
-        </div>
-
-        <div class="gallery-item reveal">
-            <img src="https://images.unsplash.com/photo-1512690459411-b9245aed614b?auto=format&fit=crop&w=900&q=80" alt="Barba">
-        </div>
-
-        <div class="gallery-item reveal">
-            <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=900&q=80" alt="Barber shop">
-        </div>
-
-        <div class="gallery-item reveal">
-            <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=900&q=80" alt="Corte profesional">
-        </div>
-
-        <div class="gallery-item reveal">
-            <img src="https://images.unsplash.com/photo-1559599101-f09722fb4948?auto=format&fit=crop&w=900&q=80" alt="Barbería premium">
         </div>
 
     </div>
@@ -1577,247 +2179,749 @@ footer p{
 </section>
 
 
-<!-- ======================================================
-     BOOKING
-====================================================== -->
+<!-- =========================================================
+     SERVICES
+========================================================= -->
 
-<section class="booking" id="citas">
+<section id="servicios">
 
-    <div class="section-title reveal">
-        <small>RESERVACIONES</small>
-        <h2>Agenda tu cita</h2>
-        <p>
-            Selecciona el servicio, el día y el horario que prefieras.
-        </p>
-    </div>
+    <div class="section-container">
 
-    <div class="booking-container">
+        <div class="section-heading">
 
-        <div class="booking-info reveal">
+            <div class="section-tag">
+                NUESTROS SERVICIOS
+            </div>
 
             <h2>
-                Tu próximo <span>look</span>
-                comienza aquí.
+                TU ESTILO.<br>
+                TU REGLA.
             </h2>
 
             <p>
-                Selecciona una fecha disponible y después
-                uno de los horarios disponibles.
-            </p>
-
-            <br>
-
-            <p>
-                🟢 Disponible<br>
-                ⚫ Ocupado<br>
-                🔴 Día cerrado
+                Servicios profesionales pensados para que salgas
+                de BLACK CROWN con un estilo que realmente te represente.
             </p>
 
         </div>
 
 
-        <div class="booking-box reveal">
+        <div class="services-grid">
 
-            <form id="bookingForm">
 
-                <div class="form-group">
+            <!-- 1 -->
 
-                    <label for="clientName">
-                        Nombre
-                    </label>
+            <article class="service-card">
 
-                    <input
-                        type="text"
-                        id="clientName"
-                        placeholder="Tu nombre"
-                        required
+                <div class="service-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1000&q=85"
+                        alt="Corte masculino"
+                        loading="lazy"
                     >
 
                 </div>
 
+                <div class="service-content">
 
-                <div class="form-group">
+                    <span class="service-number">01</span>
 
-                    <label for="clientPhone">
-                        Teléfono
-                    </label>
-
-                    <input
-                        type="tel"
-                        id="clientPhone"
-                        placeholder="Tu teléfono"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="service">
-                        Servicio
-                    </label>
-
-                    <select id="service" required>
-
-                        <option value="">
-                            Selecciona un servicio
-                        </option>
-
-                        <option value="Corte Masculino">
-                            Corte Masculino - $180
-                        </option>
-
-                        <option value="Corte para Niño">
-                            Corte para Niño (3-12 años) - $150
-                        </option>
-
-                        <option value="Fade / Degradado">
-                            Fade / Degradado - $200
-                        </option>
-
-                        <option value="Taper Fade">
-                            Taper Fade - $200
-                        </option>
-
-                        <option value="Diseño de Barba">
-                            Diseño de Barba - $130
-                        </option>
-
-                        <option value="Facial">
-                            Facial - $180
-                        </option>
-
-                        <option value="Exfoliación">
-                            Exfoliación - $150
-                        </option>
-
-                        <option value="Combo Premium">
-                            Combo Premium - $300
-                        </option>
-
-                        <option value="Mullet">
-                            Mullet - $220
-                        </option>
-
-                        <option value="Diseño Especial">
-                            Diseño Especial - $250+
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="child-age-box" id="childAgeBox">
+                    <h3>Corte Masculino</h3>
 
                     <p>
-                        👦 El corte infantil está pensado para niños
-                        de <strong style="color:#d4af37;">3 a 12 años</strong>.
+                        Corte personalizado de acuerdo con tu estilo,
+                        rostro y tipo de cabello.
                     </p>
 
-                    <div class="form-group" style="margin-bottom:0;">
-
-                        <label for="childAge">
-                            Edad del niño
-                        </label>
-
-                        <input
-                            type="number"
-                            id="childAge"
-                            min="3"
-                            max="12"
-                            placeholder="Edad"
-                        >
-
-                    </div>
+                    <span class="service-price">
+                        $180 MXN
+                    </span>
 
                 </div>
 
-
-                <!-- CALENDAR -->
-
-                <label style="display:block;color:#bbb;font-size:13px;margin-bottom:8px;">
-                    Selecciona el día
-                </label>
-
-                <div class="calendar">
-
-                    <div class="calendar-header">
-
-                        <button
-                            type="button"
-                            class="calendar-arrow"
-                            id="prevMonth">
-                            ‹
-                        </button>
-
-                        <h3 id="calendarTitle">
-                            Mes
-                        </h3>
-
-                        <button
-                            type="button"
-                            class="calendar-arrow"
-                            id="nextMonth">
-                            ›
-                        </button>
-
-                    </div>
+            </article>
 
 
-                    <div class="calendar-week">
+            <!-- 2 -->
 
-                        <div>L</div>
-                        <div>M</div>
-                        <div>M</div>
-                        <div>J</div>
-                        <div>V</div>
-                        <div>S</div>
-                        <div>D</div>
+            <article class="service-card">
 
-                    </div>
+                <div class="service-image">
 
-
-                    <div
-                        class="calendar-days"
-                        id="calendarDays">
-                    </div>
+                    <img
+                        src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=1000&q=85"
+                        alt="Corte para niño"
+                        loading="lazy"
+                    >
 
                 </div>
 
+                <div class="service-content">
 
-                <input type="hidden" id="selectedDate">
+                    <span class="service-number">02</span>
 
+                    <h3>Corte para Niño</h3>
 
-                <div id="timeArea">
+                    <p>
+                        Cortes cómodos y modernos para los más pequeños.
+                    </p>
 
-                    <div class="time-title">
-                        🕐 Horarios disponibles
+                    <div class="child-note">
+                        👦 Corte infantil: 3 a 12 años
                     </div>
 
-                    <div
-                        class="time-slots"
-                        id="timeSlots">
-                    </div>
+                    <br>
+
+                    <span class="service-price">
+                        $150 MXN
+                    </span>
 
                 </div>
 
+            </article>
 
-                <input
-                    type="hidden"
-                    id="selectedTime"
+
+            <!-- 3 -->
+
+            <article class="service-card">
+
+                <div class="service-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1622286346003-c6c4e1f1c8a5?auto=format&fit=crop&w=1000&q=85"
+                        alt="Fade"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="service-content">
+
+                    <span class="service-number">03</span>
+
+                    <h3>Fade / Degradado</h3>
+
+                    <p>
+                        Degradado limpio y detallado para un acabado moderno.
+                    </p>
+
+                    <span class="service-price">
+                        $200 MXN
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- 4 -->
+
+            <article class="service-card">
+
+                <div class="service-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1000&q=80"
+                        alt="Taper Fade"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="service-content">
+
+                    <span class="service-number">04</span>
+
+                    <h3>Taper Fade</h3>
+
+                    <p>
+                        Transición suave y precisa con acabado premium.
+                    </p>
+
+                    <span class="service-price">
+                        $200 MXN
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- 5 -->
+
+            <article class="service-card">
+
+                <div class="service-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1000&q=85"
+                        alt="Diseño de barba"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="service-content">
+
+                    <span class="service-number">05</span>
+
+                    <h3>Diseño de Barba</h3>
+
+                    <p>
+                        Perfilado y diseño de barba para complementar tu corte.
+                    </p>
+
+                    <span class="service-price">
+                        $130 MXN
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- 6 -->
+
+            <article class="service-card">
+
+                <div class="service-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?auto=format&fit=crop&w=1000&q=85"
+                        alt="Facial"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="service-content">
+
+                    <span class="service-number">06</span>
+
+                    <h3>Facial</h3>
+
+                    <p>
+                        Limpieza y cuidado facial para una sensación fresca.
+                    </p>
+
+                    <span class="service-price">
+                        $180 MXN
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- 7 -->
+
+            <article class="service-card">
+
+                <div class="service-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=1000&q=85"
+                        alt="Exfoliación"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="service-content">
+
+                    <span class="service-number">07</span>
+
+                    <h3>Exfoliación</h3>
+
+                    <p>
+                        Tratamiento para ayudar a limpiar y revitalizar la piel.
+                    </p>
+
+                    <span class="service-price">
+                        $150 MXN
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- 8 -->
+
+            <article class="service-card">
+
+                <div class="service-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1000&q=85"
+                        alt="Combo premium"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="service-content">
+
+                    <span class="service-number">08</span>
+
+                    <h3>Combo Premium</h3>
+
+                    <p>
+                        Corte + barba + acabado profesional.
+                    </p>
+
+                    <span class="service-price">
+                        $280 MXN
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- 9 -->
+
+            <article class="service-card">
+
+                <div class="service-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1593702288056-7927b4427053?auto=format&fit=crop&w=1000&q=85"
+                        alt="Mullet"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="service-content">
+
+                    <span class="service-number">09</span>
+
+                    <h3>Mullet</h3>
+
+                    <p>
+                        Un estilo atrevido para quienes buscan algo diferente.
+                    </p>
+
+                    <span class="service-price">
+                        $220 MXN
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- 10 -->
+
+            <article class="service-card">
+
+                <div class="service-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1000&q=85"
+                        alt="Diseño especial"
+                        loading="lazy"
+                    >
+
+                </div>
+
+                <div class="service-content">
+
+                    <span class="service-number">10</span>
+
+                    <h3>Diseño Especial</h3>
+
+                    <p>
+                        Diseños personalizados, líneas y detalles especiales
+                        para crear un look único.
+                    </p>
+
+                    <span class="service-price">
+                        Desde $250 MXN
+                    </span>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     MOTORCYCLE SECTION
+========================================================= -->
+
+<section class="motor-section">
+
+    <div class="motor-content">
+
+        <div class="motor-text">
+
+            <div class="section-tag">
+                ESTILO • ACTITUD • LIBERTAD
+            </div>
+
+            <h2>
+                RIDE<br>
+                <span>YOUR STYLE</span>
+            </h2>
+
+            <p>
+                Inspirados en la cultura urbana, el rock y las motocicletas.
+                BLACK CROWN es para quienes no quieren pasar desapercibidos.
+            </p>
+
+        </div>
+
+        <div class="bike">
+            🏍️
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     GALLERY
+========================================================= -->
+
+<section id="galeria">
+
+    <div class="section-container">
+
+        <div class="section-heading">
+
+            <div class="section-tag">
+                GALERÍA
+            </div>
+
+            <h2>
+                NUESTRO<br>
+                TRABAJO
+            </h2>
+
+            <p>
+                Un vistazo al estilo BLACK CROWN.
+            </p>
+
+        </div>
+
+
+        <div class="gallery-grid">
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1000&q=85"
+                    alt="Barbería"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1000&q=85"
+                    alt="Herramientas de barbería"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=1000&q=85"
+                    alt="Barbero trabajando"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1622288432450-277d0fef5edc?auto=format&fit=crop&w=1000&q=85"
+                    alt="Corte de cabello"
+                    loading="lazy"
+                >
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     APPOINTMENT SECTION
+========================================================= -->
+
+<section id="citas" class="appointment-section">
+
+    <div class="section-container">
+
+        <div class="section-heading">
+
+            <div class="section-tag">
+                RESERVACIONES
+            </div>
+
+            <h2>
+                AGENDA<br>
+                TU CITA
+            </h2>
+
+            <p>
+                Elige el servicio, selecciona el día y después
+                selecciona uno de los horarios disponibles.
+            </p>
+
+        </div>
+
+
+        <div class="appointment-wrapper">
+
+
+            <!-- IMAGE -->
+
+            <div class="appointment-visual">
+
+                <img
+                    src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1200&q=90"
+                    alt="Interior de barbería premium"
                 >
 
+                <div class="visual-text">
 
-                <button
-                    type="submit"
-                    class="gold-btn full-btn"
-                    style="margin-top:20px;">
-                    Confirmar cita
-                </button>
+                    <small>
+                        BLACK CROWN
+                    </small>
 
-            </form>
+                    <h3>
+                        TU ESTILO.<br>
+                        TU MOMENTO.
+                    </h3>
+
+                    <p>
+                        Reserva tu espacio y disfruta una experiencia
+                        de barbería diferente.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FORM -->
+
+            <div class="appointment-card">
+
+                <h3>
+                    RESERVA
+                </h3>
+
+                <p>
+                    Completa tus datos y selecciona el horario
+                    que mejor te funcione.
+                </p>
+
+
+                <form id="appointmentForm">
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group">
+
+                            <label for="clientName">
+                                NOMBRE
+                            </label>
+
+                            <input
+                                id="clientName"
+                                type="text"
+                                placeholder="Tu nombre"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="clientPhone">
+                                TELÉFONO
+                            </label>
+
+                            <input
+                                id="clientPhone"
+                                type="tel"
+                                placeholder="10 dígitos"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label for="service">
+                                SERVICIO
+                            </label>
+
+                            <select id="service" required>
+
+                                <option value="">
+                                    Selecciona un servicio
+                                </option>
+
+                                <option value="Corte Masculino">
+                                    Corte Masculino — $180
+                                </option>
+
+                                <option value="Corte para Niño">
+                                    Corte para Niño — $150
+                                </option>
+
+                                <option value="Fade / Degradado">
+                                    Fade / Degradado — $200
+                                </option>
+
+                                <option value="Taper Fade">
+                                    Taper Fade — $200
+                                </option>
+
+                                <option value="Diseño de Barba">
+                                    Diseño de Barba — $130
+                                </option>
+
+                                <option value="Facial">
+                                    Facial — $180
+                                </option>
+
+                                <option value="Exfoliación">
+                                    Exfoliación — $150
+                                </option>
+
+                                <option value="Combo Premium">
+                                    Combo Premium — $280
+                                </option>
+
+                                <option value="Mullet">
+                                    Mullet — $220
+                                </option>
+
+                                <option value="Diseño Especial">
+                                    Diseño Especial — Desde $250
+                                </option>
+
+                            </select>
+
+
+                            <div
+                                id="childInfo"
+                                class="child-info"
+                            >
+                                👦 <strong>Corte para Niño:</strong>
+                                este servicio considera como corte infantil
+                                las edades de <strong>3 a 12 años</strong>.
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label for="appointmentDate">
+                                FECHA
+                            </label>
+
+                            <input
+                                id="appointmentDate"
+                                type="date"
+                                required
+                            >
+
+                            <div
+                                id="dateInfo"
+                                class="date-info"
+                            >
+                                Selecciona un día para ver los horarios.
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- TIME SLOTS -->
+
+                    <div class="slots-area">
+
+                        <div class="slots-title">
+
+                            <strong>
+                                HORARIOS DISPONIBLES
+                            </strong>
+
+                            <span>
+                                Cada cita dura 45 min.
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            id="slotsGrid"
+                            class="slots-grid"
+                        >
+
+                            <div class="slots-message">
+                                📅 Selecciona primero una fecha.
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="selectedTime"
+                            class="selected-time"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="form-group" style="margin-top:20px;">
+
+                        <label for="notes">
+                            NOTAS (OPCIONAL)
+                        </label>
+
+                        <textarea
+                            id="notes"
+                            placeholder="¿Algún detalle especial para tu cita?"
+                        ></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-gold submit-appointment"
+                    >
+                        CONFIRMAR CITA
+                    </button>
+
+
+                </form>
+
+            </div>
 
         </div>
 
@@ -1826,123 +2930,122 @@ footer p{
 </section>
 
 
-<!-- ======================================================
-     CONTACT
-====================================================== -->
-
-<section class="contact" id="contacto">
-
-    <div class="section-title">
-        <small>VISÍTANOS</small>
-        <h2>BLACK CROWN</h2>
-    </div>
-
-    <div class="contact-grid">
-
-        <div class="contact-card">
-            <div class="contact-icon">📍</div>
-            <h3>Dirección</h3>
-            <p>TU DIRECCIÓN AQUÍ</p>
-        </div>
-
-        <div class="contact-card">
-            <div class="contact-icon">📞</div>
-            <h3>Teléfono</h3>
-            <p>TU TELÉFONO AQUÍ</p>
-        </div>
-
-        <div class="contact-card">
-            <div class="contact-icon">📱</div>
-            <h3>WhatsApp</h3>
-            <p>Reserva directamente con nosotros.</p>
-        </div>
-
-    </div>
-
-</section>
+</main>
 
 
-<!-- ======================================================
+<!-- =========================================================
      FOOTER
-====================================================== -->
+========================================================= -->
 
 <footer>
 
-    <strong>BLACK CROWN</strong>
+    <div class="footer-grid">
 
-    <p>
-        © 2026 BLACK CROWN Barber Shop.
-        Todos los derechos reservados.
-    </p>
+        <div>
+
+            <h3>
+                BLACK CROWN
+            </h3>
+
+            <p>
+                Barbería premium para quienes quieren
+                llevar su estilo al siguiente nivel.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                CONTACTO
+            </h3>
+
+            <p>
+                📍 TU DIRECCIÓN AQUÍ
+            </p>
+
+            <p>
+                📞 TU TELÉFONO AQUÍ
+            </p>
+
+            <p>
+                ✉️ contacto@blackcrown.com
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                HORARIOS
+            </h3>
+
+            <ul>
+
+                <li>
+                    Consulta nuestros horarios disponibles
+                    al momento de agendar.
+                </li>
+
+                <li>
+                    Domingo puede estar cerrado.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 BLACK CROWN. Todos los derechos reservados.
+        </span>
+
+        <button
+            class="barber-login-btn"
+            onclick="openLogin()"
+        >
+            🔒 PANEL DEL BARBERO
+        </button>
+
+    </div>
 
 </footer>
 
 
-<!-- ======================================================
-     BARBER LOCK BUTTON
-====================================================== -->
+<!-- =========================================================
+     SUCCESS MODAL
+========================================================= -->
 
-<button
-    class="lock-button"
-    id="openLogin"
-    title="Acceso del barbero">
-    🔒
-</button>
+<div
+    id="successModal"
+    class="modal"
+>
 
+    <div class="modal-box success-modal">
 
-<!-- ======================================================
-     LOGIN MODAL
-====================================================== -->
-
-<div class="modal" id="loginModal">
-
-    <div class="modal-content" style="max-width:430px;">
-
-        <div class="modal-header">
-
-            <h2>🔒 Barber Access</h2>
-
-            <button
-                class="close-modal"
-                data-close="loginModal">
-                ×
-            </button>
-
+        <div class="success-icon">
+            ✓
         </div>
 
+        <h3>
+            ¡CITA RESERVADA!
+        </h3>
 
-        <div class="form-group">
-
-            <label>
-                Usuario
-            </label>
-
-            <input
-                type="text"
-                id="barberUser"
-                placeholder="Usuario">
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                Contraseña
-            </label>
-
-            <input
-                type="password"
-                id="barberPass"
-                placeholder="Contraseña">
-
-        </div>
-
+        <p id="successText">
+            Tu cita fue registrada correctamente.
+        </p>
 
         <button
-            class="gold-btn full-btn"
-            id="loginButton">
-            Entrar al panel
+            class="btn btn-gold"
+            onclick="closeModal('successModal')"
+        >
+            PERFECTO
         </button>
 
     </div>
@@ -1950,284 +3053,332 @@ footer p{
 </div>
 
 
-<!-- ======================================================
-     BARBER PANEL
-====================================================== -->
+<!-- =========================================================
+     BARBER LOGIN MODAL
+========================================================= -->
 
-<div class="modal" id="barberModal">
+<div
+    id="loginModal"
+    class="modal"
+>
 
-    <div class="modal-content barber-panel">
+    <div class="modal-box">
 
         <div class="modal-header">
 
-            <div>
-                <h2>👑 BLACK CROWN</h2>
-                <p style="color:#777;margin-top:5px;">
-                    Panel del barbero
-                </p>
-            </div>
+            <div></div>
 
             <button
                 class="close-modal"
-                data-close="barberModal">
+                onclick="closeModal('loginModal')"
+            >
                 ×
             </button>
 
         </div>
 
 
-        <div class="barber-top">
-
-            <h3 style="color:#ddd;">
-                📅 Gestión de citas
-            </h3>
-
-            <div class="barber-actions">
-
-                <button
-                    class="small-btn gold"
-                    id="openConfig">
-                    ⚙️ Configurar agenda
-                </button>
-
-                <button
-                    class="small-btn"
-                    id="refreshAppointments">
-                    🔄 Actualizar
-                </button>
-
-                <button
-                    class="small-btn red"
-                    id="logoutBarber">
-                    Cerrar sesión
-                </button>
-
-            </div>
-
+        <div class="login-logo">
+            BLACK CROWN
         </div>
 
-
-        <div class="stats">
-
-            <div class="stat">
-                <span>Citas de hoy</span>
-                <strong id="todayCount">0</strong>
-            </div>
-
-            <div class="stat">
-                <span>Citas pendientes</span>
-                <strong id="pendingCount">0</strong>
-            </div>
-
-            <div class="stat">
-                <span>Total citas</span>
-                <strong id="totalCount">0</strong>
-            </div>
-
+        <div class="login-subtitle">
+            PANEL EXCLUSIVO DEL BARBERO
         </div>
 
 
         <div
-            class="appointment-list"
-            id="appointmentList">
+            id="loginError"
+            class="login-error"
+        >
+            Usuario o contraseña incorrectos.
         </div>
+
+
+        <form id="loginForm">
+
+
+            <div class="form-group">
+
+                <label>
+                    USUARIO
+                </label>
+
+                <input
+                    id="loginUser"
+                    type="text"
+                    placeholder="Usuario"
+                    required
+                >
+
+            </div>
+
+
+            <div
+                class="form-group"
+                style="margin-top:15px;"
+            >
+
+                <label>
+                    CONTRASEÑA
+                </label>
+
+                <input
+                    id="loginPassword"
+                    type="password"
+                    placeholder="Contraseña"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="btn btn-gold"
+                style="width:100%; margin-top:20px;"
+            >
+                INICIAR SESIÓN
+            </button>
+
+
+        </form>
 
     </div>
 
 </div>
 
 
-<!-- ======================================================
-     CONFIGURATION MODAL
-====================================================== -->
+<!-- =========================================================
+     BARBER PANEL
+========================================================= -->
 
-<div class="modal" id="configModal">
+<div
+    id="barberModal"
+    class="modal"
+>
 
-    <div class="modal-content">
+    <div class="barber-panel">
 
-        <div class="modal-header">
+
+        <div class="panel-top">
 
             <div>
-                <h2>⚙️ Configurar agenda</h2>
-                <p style="color:#777;margin-top:5px;">
-                    Personaliza tus días y horarios de trabajo.
+
+                <h2>
+                    PANEL DEL BARBERO
+                </h2>
+
+                <p>
+                    Administra tus citas y configura tus horarios.
                 </p>
+
             </div>
 
+
             <button
-                class="close-modal"
-                data-close="configModal">
-                ×
+                class="logout-btn"
+                onclick="logoutBarber()"
+            >
+                CERRAR SESIÓN
             </button>
 
         </div>
 
 
-        <!-- WORK DAYS -->
+        <!-- TABS -->
 
-        <div class="config-section">
+        <div class="panel-tabs">
 
-            <h3>📆 Días de trabajo</h3>
+            <button
+                class="panel-tab active"
+                onclick="showPanelTab('appointmentsPanel', this)"
+            >
+                📅 CITAS
+            </button>
 
-            <div
-                class="work-days"
-                id="workDays">
-            </div>
-
-        </div>
-
-
-        <!-- HOURS -->
-
-        <div class="config-section">
-
-            <h3>🕐 Horario general</h3>
-
-            <div class="time-config">
-
-                <div>
-
-                    <label class="config-label">
-                        Hora de entrada
-                    </label>
-
-                    <input
-                        type="time"
-                        class="config-input"
-                        id="workStart">
-
-                </div>
-
-
-                <div>
-
-                    <label class="config-label">
-                        Hora de salida
-                    </label>
-
-                    <input
-                        type="time"
-                        class="config-input"
-                        id="workEnd">
-
-                </div>
-
-
-                <div>
-
-                    <label class="config-label">
-                        Duración de cita
-                    </label>
-
-                    <select
-                        class="config-input"
-                        id="appointmentDuration">
-
-                        <option value="30">
-                            30 minutos
-                        </option>
-
-                        <option value="45">
-                            45 minutos
-                        </option>
-
-                        <option value="60">
-                            60 minutos
-                        </option>
-
-                        <option value="90">
-                            90 minutos
-                        </option>
-
-                    </select>
-
-                </div>
-
-            </div>
+            <button
+                class="panel-tab"
+                onclick="showPanelTab('schedulePanel', this)"
+            >
+                ⚙️ MI HORARIO
+            </button>
 
         </div>
 
 
-        <!-- HOLIDAYS -->
+        <!-- =====================================================
+             APPOINTMENTS PANEL
+        ====================================================== -->
 
-        <div class="config-section">
+        <div
+            id="appointmentsPanel"
+            class="panel-section active"
+        >
 
-            <h3>🎉 Días cerrados / festivos</h3>
 
-            <div
-                class="holidays"
-                id="holidaysList">
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <small>
+                        TOTAL CITAS
+                    </small>
+
+                    <strong id="statTotal">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <small>
+                        HOY
+                    </small>
+
+                    <strong id="statToday">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <small>
+                        PENDIENTES
+                    </small>
+
+                    <strong id="statPending">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <small>
+                        COMPLETADAS
+                    </small>
+
+                    <strong id="statCompleted">
+                        0
+                    </strong>
+
+                </div>
+
             </div>
 
-            <br>
 
-            <div class="time-config">
+            <div
+                id="adminAppointments"
+                class="admin-list"
+            ></div>
 
-                <div>
 
-                    <label class="config-label">
-                        Fecha
-                    </label>
+        </div>
+
+
+        <!-- =====================================================
+             SCHEDULE PANEL
+        ====================================================== -->
+
+        <div
+            id="schedulePanel"
+            class="panel-section"
+        >
+
+
+            <div class="schedule-intro">
+
+                <h3>
+                    ⚙️ CONFIGURA TU SEMANA
+                </h3>
+
+                <p>
+                    Puedes configurar cada día de forma independiente.
+                    Activa el día si trabajas, desactívalo si tienes
+                    descanso y selecciona exactamente la hora de entrada
+                    y salida. Los clientes verán automáticamente estos
+                    horarios al reservar.
+                </p>
+
+            </div>
+
+
+            <div
+                id="scheduleList"
+                class="schedule-list"
+            ></div>
+
+
+            <div class="schedule-actions">
+
+                <button
+                    class="btn btn-gold"
+                    onclick="saveSchedule()"
+                >
+                    💾 GUARDAR HORARIOS
+                </button>
+
+            </div>
+
+
+            <!-- BLOCKED DAYS -->
+
+            <div class="blocked-section">
+
+                <h3>
+                    📅 DÍAS FESTIVOS / BLOQUEADOS
+                </h3>
+
+                <p>
+                    Agrega días en los que no quieres recibir citas,
+                    aunque normalmente trabajes ese día.
+                </p>
+
+
+                <div class="blocked-add">
 
                     <input
+                        id="blockedDate"
                         type="date"
-                        class="config-input"
-                        id="holidayDate">
-
-                </div>
-
-
-                <div>
-
-                    <label class="config-label">
-                        Motivo
-                    </label>
+                    >
 
                     <input
+                        id="blockedReason"
                         type="text"
-                        class="config-input"
-                        id="holidayReason"
-                        placeholder="Ej. Día festivo">
-
-                </div>
-
-
-                <div style="display:flex;align-items:end;">
+                        placeholder="Ej. Navidad, vacaciones..."
+                    >
 
                     <button
-                        class="gold-btn full-btn"
-                        id="addHoliday"
-                        type="button">
-                        + Agregar
+                        class="btn btn-gold"
+                        onclick="addBlockedDate()"
+                    >
+                        + BLOQUEAR
                     </button>
 
                 </div>
 
+
+                <div
+                    id="blockedList"
+                    class="blocked-list"
+                ></div>
+
             </div>
+
 
         </div>
 
-
-        <button
-            class="gold-btn full-btn"
-            id="saveConfig"
-            type="button">
-            💾 Guardar configuración
-        </button>
 
     </div>
 
 </div>
 
-
-<!-- ======================================================
-     TOAST
-====================================================== -->
-
-<div
-    class="toast"
-    id="toast">
-</div>
 
 
 <script>
@@ -2239,440 +3390,379 @@ footer p{
 
 
 /* =========================================================
-   DEFAULT SETTINGS
+   STORAGE
 ========================================================= */
 
-const defaultSettings = {
+const STORAGE_APPOINTMENTS = "blackCrownCitas";
 
-    workDays: {
-        0:false, // domingo
-        1:true,  // lunes
-        2:true,  // martes
-        3:true,  // miércoles
-        4:true,  // jueves
-        5:true,  // viernes
-        6:true   // sábado
+const STORAGE_CONFIG = "blackCrownConfig";
+
+
+/* =========================================================
+   DEFAULT SCHEDULE
+========================================================= */
+
+const defaultConfig = {
+
+    days: {
+
+        lunes: {
+            enabled: true,
+            start: "09:00",
+            end: "18:00"
+        },
+
+        martes: {
+            enabled: true,
+            start: "09:00",
+            end: "18:00"
+        },
+
+        miercoles: {
+            enabled: true,
+            start: "09:00",
+            end: "18:00"
+        },
+
+        jueves: {
+            enabled: true,
+            start: "09:00",
+            end: "18:00"
+        },
+
+        viernes: {
+            enabled: true,
+            start: "09:00",
+            end: "18:00"
+        },
+
+        sabado: {
+            enabled: true,
+            start: "09:00",
+            end: "14:00"
+        },
+
+        domingo: {
+            enabled: false,
+            start: "09:00",
+            end: "14:00"
+        }
+
     },
 
-    start: "09:00",
-
-    end: "18:00",
-
-    duration: 45,
-
-    holidays: []
+    blockedDates: []
 
 };
 
 
 /* =========================================================
-   LOAD SETTINGS
+   DAY MAP
 ========================================================= */
 
-let settings =
-    JSON.parse(
-        localStorage.getItem("blackCrownSettings")
-    ) || defaultSettings;
+const dayNames = [
+    "domingo",
+    "lunes",
+    "martes",
+    "miercoles",
+    "jueves",
+    "viernes",
+    "sabado"
+];
+
+const dayLabels = {
+    lunes: "Lunes",
+    martes: "Martes",
+    miercoles: "Miércoles",
+    jueves: "Jueves",
+    viernes: "Viernes",
+    sabado: "Sábado",
+    domingo: "Domingo"
+};
+
+
+/* =========================================================
+   CONFIG
+========================================================= */
+
+function loadConfig() {
+
+    try {
+
+        const saved =
+            localStorage.getItem(STORAGE_CONFIG);
+
+        if (!saved) {
+
+            return JSON.parse(
+                JSON.stringify(defaultConfig)
+            );
+
+        }
+
+        const parsed = JSON.parse(saved);
+
+        return {
+
+            ...defaultConfig,
+
+            ...parsed,
+
+            days: {
+                ...defaultConfig.days,
+                ...(parsed.days || {})
+            },
+
+            blockedDates:
+                parsed.blockedDates || []
+
+        };
+
+    } catch {
+
+        return JSON.parse(
+            JSON.stringify(defaultConfig)
+        );
+
+    }
+
+}
+
+
+let config = loadConfig();
 
 
 /* =========================================================
    APPOINTMENTS
 ========================================================= */
 
-let appointments =
-    JSON.parse(
-        localStorage.getItem("blackCrownCitas")
-    ) || [];
+function getAppointments() {
 
+    try {
 
-/* =========================================================
-   CURRENT CALENDAR
-========================================================= */
+        return JSON.parse(
+            localStorage.getItem(
+                STORAGE_APPOINTMENTS
+            ) || "[]"
+        );
 
-let currentDate = new Date();
+    } catch {
 
-currentDate.setDate(1);
-
-let selectedDate = null;
-let selectedTime = null;
-
-
-/* =========================================================
-   ELEMENTS
-========================================================= */
-
-const menuBtn =
-    document.getElementById("menuBtn");
-
-const navLinks =
-    document.getElementById("navLinks");
-
-const service =
-    document.getElementById("service");
-
-const childAgeBox =
-    document.getElementById("childAgeBox");
-
-const childAge =
-    document.getElementById("childAge");
-
-const calendarDays =
-    document.getElementById("calendarDays");
-
-const calendarTitle =
-    document.getElementById("calendarTitle");
-
-const timeSlots =
-    document.getElementById("timeSlots");
-
-const selectedDateInput =
-    document.getElementById("selectedDate");
-
-const selectedTimeInput =
-    document.getElementById("selectedTime");
-
-const bookingForm =
-    document.getElementById("bookingForm");
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-menuBtn.addEventListener("click", () => {
-
-    navLinks.classList.toggle("active");
-
-});
-
-
-document.querySelectorAll(".nav-links a")
-.forEach(link => {
-
-    link.addEventListener("click", () => {
-
-        navLinks.classList.remove("active");
-
-    });
-
-});
-
-
-/* =========================================================
-   CHILD SERVICE
-========================================================= */
-
-service.addEventListener("change", () => {
-
-    if(service.value === "Corte para Niño"){
-
-        childAgeBox.classList.add("show");
-
-        childAge.required = true;
-
-    }else{
-
-        childAgeBox.classList.remove("show");
-
-        childAge.required = false;
-
-        childAge.value = "";
+        return [];
 
     }
 
-});
+}
+
+
+function saveAppointments(list) {
+
+    localStorage.setItem(
+        STORAGE_APPOINTMENTS,
+        JSON.stringify(list)
+    );
+
+}
 
 
 /* =========================================================
-   DATE HELPERS
+   DOM
 ========================================================= */
 
-function dateToString(date){
+const appointmentForm =
+    document.getElementById("appointmentForm");
+
+const serviceSelect =
+    document.getElementById("service");
+
+const dateInput =
+    document.getElementById("appointmentDate");
+
+const slotsGrid =
+    document.getElementById("slotsGrid");
+
+const selectedTimeElement =
+    document.getElementById("selectedTime");
+
+const dateInfo =
+    document.getElementById("dateInfo");
+
+const childInfo =
+    document.getElementById("childInfo");
+
+
+let selectedTime = "";
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+function toggleMenu() {
+
+    document
+        .getElementById("mainNav")
+        .classList.toggle("active");
+
+}
+
+
+/* =========================================================
+   MODALS
+========================================================= */
+
+function openLogin() {
+
+    document
+        .getElementById("loginModal")
+        .classList.add("active");
+
+    document
+        .getElementById("mainNav")
+        .classList.remove("active");
+
+}
+
+
+function closeModal(id) {
+
+    document
+        .getElementById(id)
+        .classList.remove("active");
+
+}
+
+
+/* =========================================================
+   MIN DATE
+========================================================= */
+
+function getTodayString() {
+
+    const today = new Date();
 
     const year =
-        date.getFullYear();
+        today.getFullYear();
 
     const month =
-        String(date.getMonth()+1).padStart(2,"0");
+        String(today.getMonth() + 1)
+        .padStart(2, "0");
 
     const day =
-        String(date.getDate()).padStart(2,"0");
+        String(today.getDate())
+        .padStart(2, "0");
 
     return `${year}-${month}-${day}`;
 
 }
 
 
-function stringToDate(value){
-
-    const parts = value.split("-");
-
-    return new Date(
-        Number(parts[0]),
-        Number(parts[1])-1,
-        Number(parts[2])
-    );
-
-}
+dateInput.min = getTodayString();
 
 
 /* =========================================================
-   MONTH NAMES
+   CHILD SERVICE
 ========================================================= */
 
-const monthNames = [
+serviceSelect.addEventListener(
+    "change",
+    function() {
 
-    "Enero",
-    "Febrero",
-    "Marzo",
-    "Abril",
-    "Mayo",
-    "Junio",
-    "Julio",
-    "Agosto",
-    "Septiembre",
-    "Octubre",
-    "Noviembre",
-    "Diciembre"
+        if (
+            this.value === "Corte para Niño"
+        ) {
 
-];
+            childInfo.classList.add("active");
+
+        } else {
+
+            childInfo.classList.remove("active");
+
+        }
+
+    }
+);
 
 
 /* =========================================================
-   CALENDAR
+   TIME SLOT GENERATOR
 ========================================================= */
 
-function renderCalendar(){
+function generateSlots(start, end) {
 
-    calendarDays.innerHTML = "";
+    const slots = [];
 
-    const year =
-        currentDate.getFullYear();
+    let [hours, minutes] =
+        start.split(":").map(Number);
 
-    const month =
-        currentDate.getMonth();
+    const [endHours, endMinutes] =
+        end.split(":").map(Number);
 
-    calendarTitle.textContent =
-        `${monthNames[month]} ${year}`;
+    let current =
+        hours * 60 + minutes;
 
-
-    const firstDay =
-        new Date(year,month,1);
-
-    let startDay =
-        firstDay.getDay();
-
-    /*
-       Convertimos domingo=0
-       a lunes=0
-    */
-
-    startDay =
-        startDay === 0 ? 6 : startDay - 1;
+    const ending =
+        endHours * 60 + endMinutes;
 
 
-    const daysInMonth =
-        new Date(year,month+1,0).getDate();
+    while (current < ending) {
 
+        const h =
+            Math.floor(current / 60);
 
-    for(let i=0;i<startDay;i++){
+        const m =
+            current % 60;
 
-        const empty =
-            document.createElement("div");
+        const time =
+            `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}`;
 
-        calendarDays.appendChild(empty);
+        slots.push(time);
+
+        current += 45;
 
     }
 
-
-    const today =
-        new Date();
-
-    today.setHours(0,0,0,0);
-
-
-    for(let day=1;day<=daysInMonth;day++){
-
-        const date =
-            new Date(year,month,day);
-
-        const button =
-            document.createElement("button");
-
-        button.type = "button";
-
-        button.className =
-            "calendar-day";
-
-        button.textContent = day;
-
-
-        const dateString =
-            dateToString(date);
-
-
-        const dayOfWeek =
-            date.getDay();
-
-
-        if(
-            date.getTime() === today.getTime()
-        ){
-
-            button.classList.add("today");
-
-        }
-
-
-        const holiday =
-            settings.holidays.find(
-                h => h.date === dateString
-            );
-
-
-        const isWorkDay =
-            settings.workDays[dayOfWeek];
-
-
-        const isPast =
-            date < today;
-
-
-        if(
-            isPast ||
-            !isWorkDay ||
-            holiday
-        ){
-
-            button.disabled = true;
-
-            if(holiday || !isWorkDay){
-
-                button.classList.add("closed");
-
-            }
-
-        }
-
-
-        if(
-            selectedDate === dateString
-        ){
-
-            button.classList.add("selected");
-
-        }
-
-
-        button.addEventListener("click", () => {
-
-            selectedDate = dateString;
-
-            selectedTime = null;
-
-            selectedDateInput.value =
-                selectedDate;
-
-            selectedTimeInput.value = "";
-
-            renderCalendar();
-
-            renderTimeSlots();
-
-        });
-
-
-        calendarDays.appendChild(button);
-
-    }
+    return slots;
 
 }
 
 
 /* =========================================================
-   NEXT / PREVIOUS MONTH
+   CHECK BLOCKED DATE
 ========================================================= */
 
-document.getElementById("prevMonth")
-.addEventListener("click", () => {
+function getBlockedDate(date) {
 
-    currentDate.setMonth(
-        currentDate.getMonth()-1
-    );
-
-    renderCalendar();
-
-});
-
-
-document.getElementById("nextMonth")
-.addEventListener("click", () => {
-
-    currentDate.setMonth(
-        currentDate.getMonth()+1
-    );
-
-    renderCalendar();
-
-});
-
-
-/* =========================================================
-   TIME CREATION
-========================================================= */
-
-function minutesFromTime(time){
-
-    const [hours,minutes] =
-        time.split(":").map(Number);
-
-    return hours * 60 + minutes;
-
-}
-
-
-function timeFromMinutes(minutes){
-
-    const hours =
-        Math.floor(minutes/60);
-
-    const mins =
-        minutes % 60;
-
-    return `${String(hours).padStart(2,"0")}:${String(mins).padStart(2,"0")}`;
-
-}
-
-
-/* =========================================================
-   CHECK OCCUPIED
-========================================================= */
-
-function isTimeOccupied(date,time){
-
-    return appointments.some(
-        appointment =>
-            appointment.date === date &&
-            appointment.time === time
+    return config.blockedDates.find(
+        item => item.date === date
     );
 
 }
 
 
 /* =========================================================
-   RENDER TIME SLOTS
+   RENDER SLOTS
 ========================================================= */
 
-function renderTimeSlots(){
+function renderSlots() {
 
-    timeSlots.innerHTML = "";
+    selectedTime = "";
 
-    if(!selectedDate){
+    selectedTimeElement.textContent = "";
 
-        timeSlots.innerHTML =
-            `<div class="closed-message" style="grid-column:1/-1;">
-                📅 Primero selecciona un día.
-             </div>`;
+    slotsGrid.innerHTML = "";
+
+
+    const selectedDate =
+        dateInput.value;
+
+
+    if (!selectedDate) {
+
+        slotsGrid.innerHTML = `
+            <div class="slots-message">
+                📅 Selecciona primero una fecha.
+            </div>
+        `;
 
         return;
 
@@ -2680,291 +3770,378 @@ function renderTimeSlots(){
 
 
     const date =
-        stringToDate(selectedDate);
-
-    const day =
-        date.getDay();
-
-
-    const holiday =
-        settings.holidays.find(
-            h => h.date === selectedDate
+        new Date(
+            selectedDate + "T00:00:00"
         );
 
 
-    if(!settings.workDays[day]){
+    const day =
+        dayNames[date.getDay()];
 
-        timeSlots.innerHTML =
-            `<div class="closed-message" style="grid-column:1/-1;">
-                🔴 La barbería está cerrada este día.
-             </div>`;
+    const schedule =
+        config.days[day];
+
+
+    /* PAST DATE */
+
+    if (
+        selectedDate <
+        getTodayString()
+    ) {
+
+        dateInfo.textContent =
+            "❌ No puedes reservar una fecha pasada.";
+
+        slotsGrid.innerHTML = `
+            <div class="slots-message">
+                ❌ Fecha no disponible.
+            </div>
+        `;
 
         return;
 
     }
 
 
-    if(holiday){
+    /* BLOCKED DATE */
 
-        timeSlots.innerHTML =
-            `<div class="closed-message" style="grid-column:1/-1;">
-                🎉 Cerrado: ${holiday.reason}
-             </div>`;
+    const blocked =
+        getBlockedDate(selectedDate);
+
+
+    if (blocked) {
+
+        dateInfo.textContent =
+            `🚫 No disponible: ${blocked.reason || "Día bloqueado"}`;
+
+        slotsGrid.innerHTML = `
+            <div class="slots-message">
+                🚫 Este día no está disponible para citas.
+            </div>
+        `;
 
         return;
 
     }
 
 
-    const start =
-        minutesFromTime(settings.start);
+    /* DAY OFF */
 
-    const end =
-        minutesFromTime(settings.end);
+    if (!schedule || !schedule.enabled) {
 
-    const duration =
-        Number(settings.duration);
+        dateInfo.textContent =
+            `😴 El ${dayLabels[day]} el barbero no trabaja.`;
+
+        slotsGrid.innerHTML = `
+            <div class="slots-message">
+                😴 No hay citas disponibles este día.
+            </div>
+        `;
+
+        return;
+
+    }
 
 
-    let available = 0;
+    dateInfo.textContent =
+        `🕐 Horario: ${schedule.start} — ${schedule.end}`;
 
 
-    for(
-        let minute = start;
-        minute + duration <= end;
-        minute += duration
-    ){
+    const slots =
+        generateSlots(
+            schedule.start,
+            schedule.end
+        );
 
-        const time =
-            timeFromMinutes(minute);
+
+    const appointments =
+        getAppointments();
+
+
+    const booked =
+        appointments
+            .filter(
+                item =>
+                    item.date === selectedDate &&
+                    item.status !== "cancelled"
+            )
+            .map(
+                item => item.time
+            );
+
+
+    if (!slots.length) {
+
+        slotsGrid.innerHTML = `
+            <div class="slots-message">
+                No hay horarios configurados.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    slots.forEach(time => {
 
         const button =
             document.createElement("button");
 
         button.type = "button";
 
-        button.className =
-            "time-slot";
+        button.className = "time-slot";
 
-        button.textContent =
-            time;
+        button.textContent = time;
 
 
-        const occupied =
-            isTimeOccupied(
-                selectedDate,
-                time
-            );
+        if (booked.includes(time)) {
 
-
-        if(occupied){
+            button.classList.add("booked");
 
             button.disabled = true;
 
-            button.classList.add("occupied");
+            button.title =
+                "Este horario ya está reservado.";
 
-            button.textContent =
-                `${time} · Ocupado`;
-
-        }else{
-
-            available++;
-
-            if(selectedTime === time){
-
-                button.classList.add("selected");
-
-            }
-
+        } else {
 
             button.addEventListener(
                 "click",
-                () => {
-
-                    selectedTime = time;
-
-                    selectedTimeInput.value =
-                        time;
-
-                    renderTimeSlots();
-
-                }
+                () => selectTime(time, button)
             );
 
         }
 
 
-        timeSlots.appendChild(button);
+        slotsGrid.appendChild(button);
 
-    }
+    });
 
-
-    if(available === 0){
-
-        timeSlots.innerHTML =
-            `<div class="closed-message" style="grid-column:1/-1;">
-                😔 Ya no hay horarios disponibles para este día.
-             </div>`;
-
-    }
 
 }
 
 
 /* =========================================================
-   BOOKING
+   SELECT TIME
 ========================================================= */
 
-bookingForm.addEventListener("submit",(e)=>{
+function selectTime(time, button) {
 
-    e.preventDefault();
-
-
-    const name =
-        document.getElementById("clientName").value.trim();
-
-    const phone =
-        document.getElementById("clientPhone").value.trim();
-
-    const selectedService =
-        service.value;
+    selectedTime = time;
 
 
-    if(!selectedDate){
-
-        showToast("📅 Selecciona una fecha.");
-
-        return;
-
-    }
-
-
-    if(!selectedTime){
-
-        showToast("🕐 Selecciona un horario.");
-
-        return;
-
-    }
+    document
+        .querySelectorAll(".time-slot")
+        .forEach(
+            btn =>
+                btn.classList.remove("selected")
+        );
 
 
-    if(selectedService === "Corte para Niño"){
+    button.classList.add("selected");
 
-        const age =
-            Number(childAge.value);
 
-        if(age < 3 || age > 12){
+    selectedTimeElement.textContent =
+        `✓ Horario seleccionado: ${time}`;
 
-            showToast(
-                "👦 El corte infantil es para edades de 3 a 12 años."
+}
+
+
+/* =========================================================
+   DATE CHANGE
+========================================================= */
+
+dateInput.addEventListener(
+    "change",
+    renderSlots
+);
+
+
+/* =========================================================
+   SUBMIT APPOINTMENT
+========================================================= */
+
+appointmentForm.addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document
+                .getElementById("clientName")
+                .value
+                .trim();
+
+
+        const phone =
+            document
+                .getElementById("clientPhone")
+                .value
+                .trim();
+
+
+        const service =
+            serviceSelect.value;
+
+
+        const date =
+            dateInput.value;
+
+
+        const notes =
+            document
+                .getElementById("notes")
+                .value
+                .trim();
+
+
+        if (!selectedTime) {
+
+            alert(
+                "Selecciona un horario disponible."
             );
 
             return;
 
         }
 
-    }
+
+        if (!date) {
+
+            alert(
+                "Selecciona una fecha."
+            );
+
+            return;
+
+        }
 
 
-    if(
-        isTimeOccupied(
-            selectedDate,
-            selectedTime
-        )
-    ){
+        const appointments =
+            getAppointments();
 
-        showToast(
-            "⚠️ Ese horario acaba de ser ocupado."
+
+        const alreadyBooked =
+            appointments.some(
+                item =>
+                    item.date === date &&
+                    item.time === selectedTime &&
+                    item.status !== "cancelled"
+            );
+
+
+        if (alreadyBooked) {
+
+            alert(
+                "Ese horario acaba de ser ocupado. Selecciona otro."
+            );
+
+            renderSlots();
+
+            return;
+
+        }
+
+
+        const newAppointment = {
+
+            id:
+                Date.now(),
+
+            name,
+
+            phone,
+
+            service,
+
+            date,
+
+            time:
+                selectedTime,
+
+            notes,
+
+            status:
+                "pending",
+
+            createdAt:
+                new Date().toISOString()
+
+        };
+
+
+        appointments.push(
+            newAppointment
         );
 
-        renderTimeSlots();
 
-        return;
+        saveAppointments(
+            appointments
+        );
+
+
+        const formattedDate =
+            formatDate(date);
+
+
+        document
+            .getElementById("successText")
+            .innerHTML =
+                `Tu cita quedó registrada para el
+                <strong>${formattedDate}</strong>
+                a las
+                <strong>${selectedTime}</strong>.<br><br>
+                Servicio: <strong>${escapeHtml(service)}</strong>`;
+
+
+        document
+            .getElementById("successModal")
+            .classList.add("active");
+
+
+        appointmentForm.reset();
+
+        selectedTime = "";
+
+        selectedTimeElement.textContent = "";
+
+        childInfo.classList.remove("active");
+
+        slotsGrid.innerHTML = `
+            <div class="slots-message">
+                📅 Selecciona primero una fecha.
+            </div>
+        `;
+
+        dateInfo.textContent =
+            "Selecciona un día para ver los horarios.";
 
     }
-
-
-    const appointment = {
-
-        id:
-            Date.now(),
-
-        name,
-
-        phone,
-
-        service:
-            selectedService,
-
-        age:
-            selectedService === "Corte para Niño"
-            ? childAge.value
-            : "",
-
-        date:
-            selectedDate,
-
-        time:
-            selectedTime,
-
-        createdAt:
-            new Date().toISOString(),
-
-        finished:
-            false
-
-    };
-
-
-    appointments.push(appointment);
-
-
-    saveAppointments();
-
-
-    showToast(
-        `✅ Cita confirmada para ${selectedDate} a las ${selectedTime}.`
-    );
-
-
-    bookingForm.reset();
-
-    selectedDate = null;
-
-    selectedTime = null;
-
-    childAgeBox.classList.remove("show");
-
-    selectedDateInput.value = "";
-
-    selectedTimeInput.value = "";
-
-    renderCalendar();
-
-    renderTimeSlots();
-
-});
+);
 
 
 /* =========================================================
-   LOCAL STORAGE
+   FORMAT DATE
 ========================================================= */
 
-function saveAppointments(){
+function formatDate(dateString) {
 
-    localStorage.setItem(
-        "blackCrownCitas",
-        JSON.stringify(appointments)
-    );
+    const date =
+        new Date(
+            dateString + "T00:00:00"
+        );
 
-}
-
-
-function saveSettings(){
-
-    localStorage.setItem(
-        "blackCrownSettings",
-        JSON.stringify(settings)
+    return date.toLocaleDateString(
+        "es-MX",
+        {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        }
     );
 
 }
@@ -2974,888 +4151,926 @@ function saveSettings(){
    LOGIN
 ========================================================= */
 
-document.getElementById("openLogin")
-.addEventListener("click",()=>{
+document
+    .getElementById("loginForm")
+    .addEventListener(
+        "submit",
+        function(event) {
 
-    document.getElementById("loginModal")
-        .classList.add("show");
+            event.preventDefault();
 
-});
 
+            const user =
+                document
+                    .getElementById("loginUser")
+                    .value
+                    .trim();
 
-document.getElementById("loginButton")
-.addEventListener("click",()=>{
 
-    const user =
-        document.getElementById("barberUser").value;
+            const password =
+                document
+                    .getElementById("loginPassword")
+                    .value;
 
-    const pass =
-        document.getElementById("barberPass").value;
 
+            const error =
+                document
+                    .getElementById("loginError");
 
-    /*
-       DATOS DEL BARBERO
 
-       Usuario:
-       barbero
+            /*
+                DATOS DE DEMOSTRACIÓN
 
-       Contraseña:
-       BlackCrown2026
-    */
+                Usuario:
+                barbero
 
-    if(
-        user === "barbero" &&
-        pass === "BlackCrown2026"
-    ){
+                Contraseña:
+                BlackCrown2026
+            */
 
-        document.getElementById("loginModal")
-            .classList.remove("show");
+            if (
+                user === "barbero" &&
+                password === "BlackCrown2026"
+            ) {
 
-        document.getElementById("barberModal")
-            .classList.add("show");
+                error.style.display =
+                    "none";
 
-        renderAppointments();
 
-        showToast(
-            "👑 Bienvenido al panel del barbero."
-        );
-
-    }else{
-
-        showToast(
-            "❌ Usuario o contraseña incorrectos."
-        );
-
-    }
-
-});
-
-
-/* =========================================================
-   BARBER PANEL
-========================================================= */
-
-function renderAppointments(){
-
-    const list =
-        document.getElementById("appointmentList");
-
-    list.innerHTML = "";
-
-
-    const sorted =
-        [...appointments].sort(
-            (a,b) =>
-                `${a.date} ${a.time}`
-                .localeCompare(
-                    `${b.date} ${b.time}`
-                )
-        );
-
-
-    if(sorted.length === 0){
-
-        list.innerHTML =
-            `<div class="empty">
-                📭 No tienes citas todavía.
-             </div>`;
-
-    }
-
-
-    sorted.forEach(appointment => {
-
-        const div =
-            document.createElement("div");
-
-        div.className =
-            "appointment";
-
-
-        if(appointment.finished){
-
-            div.classList.add("done");
-
-        }
-
-
-        const date =
-            stringToDate(
-                appointment.date
-            );
-
-
-        const readableDate =
-            date.toLocaleDateString(
-                "es-MX",
-                {
-                    weekday:"long",
-                    day:"numeric",
-                    month:"long"
-                }
-            );
-
-
-        const dateTime =
-            new Date(
-                `${appointment.date}T${appointment.time}:00`
-            );
-
-
-        const now =
-            new Date();
-
-
-        const canFinish =
-            now >= dateTime &&
-            !appointment.finished;
-
-
-        let statusHTML;
-
-
-        if(appointment.finished){
-
-            statusHTML =
-                `<span class="status finished">
-                    Terminada
-                 </span>`;
-
-        }else if(now >= dateTime){
-
-            statusHTML =
-                `<span class="status pending">
-                    Lista
-                 </span>`;
-
-        }else{
-
-            statusHTML =
-                `<span class="status future">
-                    Próxima
-                 </span>`;
-
-        }
-
-
-        div.innerHTML = `
-
-            <div>
-
-                <h3>
-                    ${escapeHTML(appointment.name)}
-                </h3>
-
-                <p>
-                    📅 ${readableDate}
-                </p>
-
-                <p>
-                    🕐 <strong>${appointment.time}</strong>
-                </p>
-
-                <p>
-                    ✂️ ${escapeHTML(appointment.service)}
-                </p>
-
-                ${
-                    appointment.age
-                    ?
-                    `<p>👦 Edad: ${appointment.age} años</p>`
-                    :
-                    ""
-                }
-
-                <p>
-                    📞 ${escapeHTML(appointment.phone)}
-                </p>
-
-                <br>
-
-                ${statusHTML}
-
-            </div>
-
-            <div class="appointment-actions">
-
-                ${
-                    canFinish
-                    ?
-                    `<button
-                        class="small-btn gold finish-btn"
-                        data-id="${appointment.id}">
-                        ✓ Terminar
-                     </button>`
-                    :
-                    ""
-                }
-
-                <button
-                    class="small-btn red delete-btn"
-                    data-id="${appointment.id}">
-                    🗑️
-                </button>
-
-            </div>
-        `;
-
-
-        list.appendChild(div);
-
-    });
-
-
-    updateStats();
-
-
-    document.querySelectorAll(".finish-btn")
-    .forEach(button => {
-
-        button.addEventListener("click",()=>{
-
-            const id =
-                Number(button.dataset.id);
-
-            const appointment =
-                appointments.find(
-                    a => a.id === id
+                closeModal(
+                    "loginModal"
                 );
 
-            if(appointment){
 
-                appointment.finished = true;
+                document
+                    .getElementById("barberModal")
+                    .classList.add("active");
 
-                saveAppointments();
 
-                renderAppointments();
+                renderAdminAppointments();
 
-                showToast(
-                    "✅ Cita marcada como terminada."
-                );
+                renderScheduleEditor();
+
+                renderBlockedDates();
+
+
+            } else {
+
+                error.style.display =
+                    "block";
 
             }
 
-        });
-
-    });
-
-
-    document.querySelectorAll(".delete-btn")
-    .forEach(button => {
-
-        button.addEventListener("click",()=>{
-
-            const id =
-                Number(button.dataset.id);
-
-
-            const confirmation =
-                confirm(
-                    "¿Quieres eliminar esta cita?"
-                );
-
-
-            if(!confirmation) return;
-
-
-            appointments =
-                appointments.filter(
-                    a => a.id !== id
-                );
-
-
-            saveAppointments();
-
-            renderAppointments();
-
-            renderTimeSlots();
-
-            showToast(
-                "🗑️ Cita eliminada."
-            );
-
-        });
-
-    });
-
-}
-
-
-/* =========================================================
-   STATS
-========================================================= */
-
-function updateStats(){
-
-    const today =
-        dateToString(new Date());
-
-
-    const todayAppointments =
-        appointments.filter(
-            a => a.date === today
-        );
-
-
-    const pending =
-        appointments.filter(
-            a => !a.finished
-        );
-
-
-    document.getElementById("todayCount")
-        .textContent =
-        todayAppointments.length;
-
-
-    document.getElementById("pendingCount")
-        .textContent =
-        pending.length;
-
-
-    document.getElementById("totalCount")
-        .textContent =
-        appointments.length;
-
-}
-
-
-/* =========================================================
-   OPEN CONFIG
-========================================================= */
-
-document.getElementById("openConfig")
-.addEventListener("click",()=>{
-
-    loadConfigForm();
-
-    document.getElementById("configModal")
-        .classList.add("show");
-
-});
-
-
-/* =========================================================
-   DAYS CONFIG
-========================================================= */
-
-const days = [
-
-    {id:1,name:"Lunes"},
-    {id:2,name:"Martes"},
-    {id:3,name:"Miércoles"},
-    {id:4,name:"Jueves"},
-    {id:5,name:"Viernes"},
-    {id:6,name:"Sábado"},
-    {id:0,name:"Domingo"}
-
-];
-
-
-function loadConfigForm(){
-
-    const container =
-        document.getElementById("workDays");
-
-    container.innerHTML = "";
-
-
-    days.forEach(day => {
-
-        const wrapper =
-            document.createElement("div");
-
-        wrapper.className =
-            "day-config";
-
-
-        wrapper.innerHTML = `
-
-            <span>${day.name}</span>
-
-            <label class="switch">
-
-                <input
-                    type="checkbox"
-                    data-day="${day.id}"
-                    ${settings.workDays[day.id] ? "checked" : ""}
-                >
-
-                <span class="slider"></span>
-
-            </label>
-        `;
-
-
-        container.appendChild(wrapper);
-
-    });
-
-
-    document.getElementById("workStart")
-        .value = settings.start;
-
-
-    document.getElementById("workEnd")
-        .value = settings.end;
-
-
-    document.getElementById("appointmentDuration")
-        .value = settings.duration;
-
-
-    renderHolidays();
-
-}
-
-
-/* =========================================================
-   SAVE CONFIG
-========================================================= */
-
-document.getElementById("saveConfig")
-.addEventListener("click",()=>{
-
-    document.querySelectorAll(
-        "#workDays input"
-    )
-    .forEach(input => {
-
-        const day =
-            input.dataset.day;
-
-        settings.workDays[day] =
-            input.checked;
-
-    });
-
-
-    settings.start =
-        document.getElementById(
-            "workStart"
-        ).value;
-
-
-    settings.end =
-        document.getElementById(
-            "workEnd"
-        ).value;
-
-
-    settings.duration =
-        Number(
-            document.getElementById(
-                "appointmentDuration"
-            ).value
-        );
-
-
-    const start =
-        minutesFromTime(settings.start);
-
-    const end =
-        minutesFromTime(settings.end);
-
-
-    if(start >= end){
-
-        showToast(
-            "⚠️ La hora de entrada debe ser menor que la salida."
-        );
-
-        return;
-
-    }
-
-
-    saveSettings();
-
-    renderCalendar();
-
-    renderTimeSlots();
-
-    document.getElementById("configModal")
-        .classList.remove("show");
-
-
-    showToast(
-        "💾 Configuración guardada correctamente."
-    );
-
-});
-
-
-/* =========================================================
-   HOLIDAYS
-========================================================= */
-
-document.getElementById("addHoliday")
-.addEventListener("click",()=>{
-
-    const date =
-        document.getElementById(
-            "holidayDate"
-        ).value;
-
-
-    const reason =
-        document.getElementById(
-            "holidayReason"
-        ).value.trim();
-
-
-    if(!date){
-
-        showToast(
-            "📅 Selecciona una fecha."
-        );
-
-        return;
-
-    }
-
-
-    const existing =
-        settings.holidays.find(
-            h => h.date === date
-        );
-
-
-    if(existing){
-
-        showToast(
-            "⚠️ Ese día ya está agregado."
-        );
-
-        return;
-
-    }
-
-
-    settings.holidays.push({
-
-        date,
-
-        reason:
-            reason || "Día cerrado"
-
-    });
-
-
-    settings.holidays.sort(
-        (a,b) =>
-            a.date.localeCompare(b.date)
-    );
-
-
-    saveSettings();
-
-    renderHolidays();
-
-    renderCalendar();
-
-    renderTimeSlots();
-
-
-    document.getElementById(
-        "holidayDate"
-    ).value = "";
-
-
-    document.getElementById(
-        "holidayReason"
-    ).value = "";
-
-
-    showToast(
-        "🎉 Día cerrado agregado."
-    );
-
-});
-
-
-function renderHolidays(){
-
-    const list =
-        document.getElementById(
-            "holidaysList"
-        );
-
-    list.innerHTML = "";
-
-
-    if(settings.holidays.length === 0){
-
-        list.innerHTML =
-            `<div class="empty">
-                No hay días cerrados personalizados.
-             </div>`;
-
-        return;
-
-    }
-
-
-    settings.holidays.forEach(
-        holiday => {
-
-            const item =
-                document.createElement("div");
-
-            item.className =
-                "holiday-item";
-
-
-            const date =
-                stringToDate(
-                    holiday.date
-                );
-
-
-            const readable =
-                date.toLocaleDateString(
-                    "es-MX",
-                    {
-                        day:"numeric",
-                        month:"long",
-                        year:"numeric"
-                    }
-                );
-
-
-            item.innerHTML = `
-
-                <div>
-
-                    📅 ${readable}
-
-                    <small>
-                        ${escapeHTML(holiday.reason)}
-                    </small>
-
-                </div>
-
-                <button
-                    class="small-btn red remove-holiday"
-                    data-date="${holiday.date}">
-                    Eliminar
-                </button>
-
-            `;
-
-
-            list.appendChild(item);
-
         }
     );
-
-
-    document.querySelectorAll(
-        ".remove-holiday"
-    )
-    .forEach(button => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                const date =
-                    button.dataset.date;
-
-
-                settings.holidays =
-                    settings.holidays.filter(
-                        h => h.date !== date
-                    );
-
-
-                saveSettings();
-
-                renderHolidays();
-
-                renderCalendar();
-
-                renderTimeSlots();
-
-                showToast(
-                    "🗑️ Día cerrado eliminado."
-                );
-
-            }
-        );
-
-    });
-
-}
-
-
-/* =========================================================
-   REFRESH
-========================================================= */
-
-document.getElementById(
-    "refreshAppointments"
-)
-.addEventListener("click",()=>{
-
-    appointments =
-        JSON.parse(
-            localStorage.getItem(
-                "blackCrownCitas"
-            )
-        ) || [];
-
-
-    renderAppointments();
-
-    showToast(
-        "🔄 Citas actualizadas."
-    );
-
-});
 
 
 /* =========================================================
    LOGOUT
 ========================================================= */
 
-document.getElementById(
-    "logoutBarber"
-)
-.addEventListener("click",()=>{
+function logoutBarber() {
 
-    document.getElementById(
+    closeModal(
         "barberModal"
-    ).classList.remove("show");
-
-    showToast(
-        "🔒 Sesión cerrada."
     );
 
-});
+}
 
 
 /* =========================================================
-   CLOSE MODALS
+   PANEL TABS
 ========================================================= */
 
-document.querySelectorAll(
-    "[data-close]"
-)
-.forEach(button => {
+function showPanelTab(
+    panelId,
+    button
+) {
 
-    button.addEventListener("click",()=>{
+    document
+        .querySelectorAll(".panel-section")
+        .forEach(
+            panel =>
+                panel.classList.remove("active")
+        );
 
-        const modal =
-            document.getElementById(
-                button.dataset.close
+
+    document
+        .querySelectorAll(".panel-tab")
+        .forEach(
+            tab =>
+                tab.classList.remove("active")
+        );
+
+
+    document
+        .getElementById(panelId)
+        .classList.add("active");
+
+
+    button.classList.add("active");
+
+}
+
+
+/* =========================================================
+   ADMIN APPOINTMENTS
+========================================================= */
+
+function renderAdminAppointments() {
+
+    const appointments =
+        getAppointments();
+
+
+    const container =
+        document
+            .getElementById(
+                "adminAppointments"
             );
 
-        modal.classList.remove("show");
 
-    });
-
-});
+    const today =
+        getTodayString();
 
 
-document.querySelectorAll(".modal")
-.forEach(modal => {
+    document
+        .getElementById("statTotal")
+        .textContent =
+            appointments.length;
 
-    modal.addEventListener("click",(e)=>{
 
-        if(e.target === modal){
+    document
+        .getElementById("statToday")
+        .textContent =
+            appointments.filter(
+                item =>
+                    item.date === today &&
+                    item.status !== "cancelled"
+            ).length;
 
-            modal.classList.remove("show");
+
+    document
+        .getElementById("statPending")
+        .textContent =
+            appointments.filter(
+                item =>
+                    item.status === "pending"
+            ).length;
+
+
+    document
+        .getElementById("statCompleted")
+        .textContent =
+            appointments.filter(
+                item =>
+                    item.status === "completed"
+            ).length;
+
+
+    if (!appointments.length) {
+
+        container.innerHTML = `
+            <div class="empty-state">
+                📅 Todavía no hay citas registradas.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    appointments.sort(
+        (a,b) =>
+            `${a.date} ${a.time}`.localeCompare(
+                `${b.date} ${b.time}`
+            )
+    );
+
+
+    container.innerHTML = "";
+
+
+    appointments.forEach(
+        appointment => {
+
+            if (
+                appointment.status ===
+                "cancelled"
+            ) return;
+
+
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "admin-appointment";
+
+
+            const canComplete =
+                appointmentHasPassed(
+                    appointment
+                );
+
+
+            card.innerHTML = `
+
+                <div>
+
+                    <div class="appointment-time">
+                        ${escapeHtml(appointment.time)}
+                    </div>
+
+                    <small style="color:#777;">
+                        ${escapeHtml(
+                            formatDate(
+                                appointment.date
+                            )
+                        )}
+                    </small>
+
+                </div>
+
+
+                <div class="appointment-info">
+
+                    <h4>
+                        ${escapeHtml(
+                            appointment.name
+                        )}
+                    </h4>
+
+                    <p>
+                        📞 ${escapeHtml(
+                            appointment.phone
+                        )}
+                        <br>
+
+                        ✂️ ${escapeHtml(
+                            appointment.service
+                        )}
+
+                        ${
+                            appointment.notes
+                            ?
+                            `<br>📝 ${escapeHtml(
+                                appointment.notes
+                            )}`
+                            :
+                            ""
+                        }
+
+                    </p>
+
+
+                    <span class="status ${
+                        appointment.status === "completed"
+                        ? "completed"
+                        : "pending"
+                    }">
+
+                        ${
+                            appointment.status === "completed"
+                            ? "Completada"
+                            : "Pendiente"
+                        }
+
+                    </span>
+
+                </div>
+
+
+                <div class="appointment-actions">
+
+                    ${
+                        appointment.status !== "completed"
+                        ?
+                        `<button
+                            class="admin-btn complete"
+                            onclick="completeAppointment(${appointment.id})"
+                            ${canComplete ? "" : "disabled"}
+                            title="${
+                                canComplete
+                                ? "Marcar como terminada"
+                                : "Se habilita después de la hora de la cita"
+                            }"
+                        >
+                            ✓ Terminar
+                        </button>`
+                        :
+                        ""
+                    }
+
+
+                    <button
+                        class="admin-btn delete"
+                        onclick="deleteAppointment(${appointment.id})"
+                    >
+                        🗑 Eliminar
+                    </button>
+
+                </div>
+
+            `;
+
+
+            container.appendChild(card);
 
         }
+    );
+
+}
+
+
+/* =========================================================
+   CHECK IF APPOINTMENT HAS PASSED
+========================================================= */
+
+function appointmentHasPassed(
+    appointment
+) {
+
+    const appointmentDate =
+        new Date(
+            `${appointment.date}T${appointment.time}:00`
+        );
+
+    return new Date() >= appointmentDate;
+
+}
+
+
+/* =========================================================
+   COMPLETE APPOINTMENT
+========================================================= */
+
+function completeAppointment(id) {
+
+    const appointments =
+        getAppointments();
+
+
+    const appointment =
+        appointments.find(
+            item =>
+                item.id === id
+        );
+
+
+    if (!appointment) return;
+
+
+    if (
+        !appointmentHasPassed(
+            appointment
+        )
+    ) {
+
+        alert(
+            "La cita todavía no ha llegado a su horario."
+        );
+
+        return;
+
+    }
+
+
+    appointment.status =
+        "completed";
+
+
+    saveAppointments(
+        appointments
+    );
+
+
+    renderAdminAppointments();
+
+}
+
+
+/* =========================================================
+   DELETE APPOINTMENT
+========================================================= */
+
+function deleteAppointment(id) {
+
+    if (
+        !confirm(
+            "¿Seguro que quieres eliminar esta cita?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    const appointments =
+        getAppointments();
+
+
+    const filtered =
+        appointments.filter(
+            item =>
+                item.id !== id
+        );
+
+
+    saveAppointments(
+        filtered
+    );
+
+
+    renderAdminAppointments();
+
+
+    renderSlots();
+
+}
+
+
+/* =========================================================
+   RENDER SCHEDULE EDITOR
+========================================================= */
+
+function renderScheduleEditor() {
+
+    const container =
+        document.getElementById(
+            "scheduleList"
+        );
+
+
+    container.innerHTML = "";
+
+
+    [
+        "lunes",
+        "martes",
+        "miercoles",
+        "jueves",
+        "viernes",
+        "sabado",
+        "domingo"
+    ]
+    .forEach(day => {
+
+        const schedule =
+            config.days[day];
+
+
+        const row =
+            document.createElement(
+                "div"
+            );
+
+
+        row.className =
+            `schedule-day ${
+                schedule.enabled
+                ? ""
+                : "off"
+            }`;
+
+
+        row.dataset.day = day;
+
+
+        row.innerHTML = `
+
+            <div class="day-name">
+
+                ${dayLabels[day]}
+
+                <small>
+                    Configuración independiente
+                </small>
+
+            </div>
+
+
+            <div class="switch-wrap">
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        class="day-enabled"
+                        ${schedule.enabled ? "checked" : ""}
+                    >
+
+                    <span class="slider"></span>
+
+                </label>
+
+                TRABAJA
+
+            </div>
+
+
+            <div class="schedule-time">
+
+                <label>
+                    HORA DE ENTRADA
+                </label>
+
+                <input
+                    type="time"
+                    class="day-start"
+                    value="${schedule.start}"
+                >
+
+            </div>
+
+
+            <div class="schedule-time">
+
+                <label>
+                    HORA DE SALIDA
+                </label>
+
+                <input
+                    type="time"
+                    class="day-end"
+                    value="${schedule.end}"
+                >
+
+            </div>
+
+        `;
+
+
+        const checkbox =
+            row.querySelector(
+                ".day-enabled"
+            );
+
+
+        checkbox.addEventListener(
+            "change",
+            () => {
+
+                row.classList.toggle(
+                    "off",
+                    !checkbox.checked
+                );
+
+            }
+        );
+
+
+        container.appendChild(row);
 
     });
 
-});
+}
+
+
+/* =========================================================
+   SAVE SCHEDULE
+========================================================= */
+
+function saveSchedule() {
+
+    const rows =
+        document.querySelectorAll(
+            ".schedule-day"
+        );
+
+
+    rows.forEach(row => {
+
+        const day =
+            row.dataset.day;
+
+
+        const enabled =
+            row.querySelector(
+                ".day-enabled"
+            ).checked;
+
+
+        const start =
+            row.querySelector(
+                ".day-start"
+            ).value;
+
+
+        const end =
+            row.querySelector(
+                ".day-end"
+            ).value;
+
+
+        config.days[day] = {
+
+            enabled,
+
+            start,
+
+            end
+
+        };
+
+    });
+
+
+    localStorage.setItem(
+        STORAGE_CONFIG,
+        JSON.stringify(config)
+    );
+
+
+    alert(
+        "✅ Horarios guardados correctamente. Los clientes ya verán los nuevos horarios."
+    );
+
+
+    renderSlots();
+
+}
+
+
+/* =========================================================
+   BLOCKED DATES
+========================================================= */
+
+function renderBlockedDates() {
+
+    const container =
+        document.getElementById(
+            "blockedList"
+        );
+
+
+    container.innerHTML = "";
+
+
+    if (
+        !config.blockedDates.length
+    ) {
+
+        container.innerHTML = `
+            <div class="empty-state" style="width:100%;">
+                No hay días bloqueados.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    config.blockedDates
+        .sort(
+            (a,b) =>
+                a.date.localeCompare(
+                    b.date
+                )
+        )
+        .forEach(
+            item => {
+
+                const element =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                element.className =
+                    "blocked-item";
+
+
+                element.innerHTML = `
+
+                    <div>
+
+                        <strong>
+                            ${escapeHtml(
+                                formatDate(
+                                    item.date
+                                )
+                            )}
+                        </strong>
+
+                        <span>
+                            ${escapeHtml(
+                                item.reason ||
+                                "Día bloqueado"
+                            )}
+                        </span>
+
+                    </div>
+
+                    <button
+                        class="remove-block"
+                        onclick="removeBlockedDate('${item.date}')"
+                        title="Eliminar bloqueo"
+                    >
+                        ×
+                    </button>
+
+                `;
+
+
+                container.appendChild(
+                    element
+                );
+
+            }
+        );
+
+}
+
+
+/* =========================================================
+   ADD BLOCKED DATE
+========================================================= */
+
+function addBlockedDate() {
+
+    const date =
+        document
+            .getElementById(
+                "blockedDate"
+            )
+            .value;
+
+
+    const reason =
+        document
+            .getElementById(
+                "blockedReason"
+            )
+            .value
+            .trim();
+
+
+    if (!date) {
+
+        alert(
+            "Selecciona una fecha."
+        );
+
+        return;
+
+    }
+
+
+    const exists =
+        config.blockedDates.some(
+            item =>
+                item.date === date
+        );
+
+
+    if (exists) {
+
+        alert(
+            "Ese día ya está bloqueado."
+        );
+
+        return;
+
+    }
+
+
+    config.blockedDates.push({
+
+        date,
+
+        reason:
+            reason ||
+            "Día bloqueado"
+
+    });
+
+
+    localStorage.setItem(
+        STORAGE_CONFIG,
+        JSON.stringify(config)
+    );
+
+
+    document
+        .getElementById(
+            "blockedDate"
+        )
+        .value = "";
+
+
+    document
+        .getElementById(
+            "blockedReason"
+        )
+        .value = "";
+
+
+    renderBlockedDates();
+
+    renderSlots();
+
+}
+
+
+/* =========================================================
+   REMOVE BLOCKED DATE
+========================================================= */
+
+function removeBlockedDate(
+    date
+) {
+
+    config.blockedDates =
+        config.blockedDates.filter(
+            item =>
+                item.date !== date
+        );
+
+
+    localStorage.setItem(
+        STORAGE_CONFIG,
+        JSON.stringify(config)
+    );
+
+
+    renderBlockedDates();
+
+    renderSlots();
+
+}
 
 
 /* =========================================================
    ESCAPE HTML
 ========================================================= */
 
-function escapeHTML(text){
+function escapeHtml(value) {
 
-    return String(text)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
-
-}
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-let toastTimer;
-
-
-function showToast(message){
-
-    const toast =
-        document.getElementById("toast");
-
-    toast.innerHTML =
-        message;
-
-    toast.classList.add("show");
-
-
-    clearTimeout(toastTimer);
-
-
-    toastTimer =
-        setTimeout(()=>{
-
-            toast.classList.remove(
-                "show"
-            );
-
-        },3500);
+    return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
 
 }
 
 
 /* =========================================================
-   REVEAL ANIMATION
+   CLOSE MODAL WHEN CLICKING OUTSIDE
 ========================================================= */
 
-function revealElements(){
+document
+    .querySelectorAll(".modal")
+    .forEach(modal => {
 
-    const elements =
-        document.querySelectorAll(".reveal");
+        modal.addEventListener(
+            "click",
+            function(event) {
 
+                if (
+                    event.target === modal
+                ) {
 
-    elements.forEach(element => {
+                    modal.classList.remove(
+                        "active"
+                    );
 
-        const position =
-            element.getBoundingClientRect().top;
+                }
 
-
-        if(
-            position <
-            window.innerHeight - 80
-        ){
-
-            element.classList.add("active");
-
-        }
+            }
+        );
 
     });
 
-}
 
+/* =========================================================
+   ESC KEY
+========================================================= */
 
-window.addEventListener(
-    "scroll",
-    revealElements
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            document
+                .querySelectorAll(".modal")
+                .forEach(
+                    modal =>
+                        modal.classList.remove(
+                            "active"
+                        )
+                );
+
+        }
+
+    }
 );
 
 
@@ -3863,51 +5078,37 @@ window.addEventListener(
    INITIALIZE
 ========================================================= */
 
-function initialize(){
-
-    /*
-       Si hoy es domingo,
-       el calendario seguirá mostrando
-       los días disponibles según configuración.
-    */
-
-    renderCalendar();
-
-    renderTimeSlots();
-
-    revealElements();
-
-}
+renderSlots();
 
 
 /* =========================================================
-   START
+   AUTO REFRESH ADMIN
 ========================================================= */
 
-initialize();
+setInterval(
+    function() {
+
+        const barberModal =
+            document.getElementById(
+                "barberModal"
+            );
 
 
-/* =========================================================
-   ACTUALIZAR PANEL AUTOMÁTICAMENTE
-========================================================= */
+        if (
+            barberModal.classList.contains(
+                "active"
+            )
+        ) {
 
-setInterval(()=>{
+            renderAdminAppointments();
 
-    if(
-        document.getElementById(
-            "barberModal"
-        ).classList.contains("show")
-    ){
+        }
 
-        renderAppointments();
-
-    }
-
-},30000);
+    },
+    30000
+);
 
 </script>
 
 </body>
 </html>
-```
-
